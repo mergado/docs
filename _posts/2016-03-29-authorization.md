@@ -10,8 +10,8 @@ To access Mergado API, clients (e.g. an application) are authenticated using [OA
 
 If you are familiar with the OAuth protocol, you already know that with every access to a protected resource (our API), clients need to provide an _access token_. Our authorization server supports two authorization grants which can be used to obtain access tokens:
 
-* Online mode, which is similar to the `authorization_code` grant in OAuth 2.0.
-* Offline mode, which is similar to the `refresh_token` grant type.
+* **Online mode**, which is similar to the `authorization_code` grant in OAuth 2.0.
+* **Offline mode**, which is similar to the `refresh_token` grant type.
 
 ## Online mode
 
@@ -29,7 +29,11 @@ To obtain an access token using the `authorization_code` grant type, the followi
    **Example:**
 
    ```
-   https://app.mergado.com/oauth2/authorize/?client_id=123&redirect_uri=https://appcloud.mergado.com&response_type=code&grant_type=authorization_code
+   https://app.mergado.com/oauth2/authorize/
+   ?client_id=123
+   &redirect_uri=https://appcloud.mergado.com
+   &response_type=code
+   &grant_type=authorization_code
    ```
 2. Authorization server redirects to the given redirection URI with a newly created authorization code (e.g. `https://app.mergado.com/?code=jkl`).
 3. A client (application) send a POST request to `https://app.mergado.com/oauth2/token/` with the following JSON encoded fields:
@@ -53,6 +57,9 @@ To obtain an access token using the `authorization_code` grant type, the followi
 ## Offline mode
 
 An access token is obtained using the `refresh_token` grant type. When an application needs to access protected resource (e.g. to hide/unhide some products) but the end-user cannot interact with Mergado in a web browser, we say that it works in the offline mode.
+
+{: .warning}
+**Warning!** Never use this mode in cases where the end-user is interacting with your application via a web browser. The mode is called _offline_ for good reason and if used incorrectly, it can create a security threat, potentially allowing an attacker to exploit a vulnerability in your application.
 
 In offline mode, the access token is obtained by the following steps:
 
