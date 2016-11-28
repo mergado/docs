@@ -7,13 +7,18 @@ active_item: ""
 order: 2
 ---
 
-Scopes define permissions for clients or applications. When a developer is creating an application, they choose a list of permissions (scopes) which will be granted to this application. For example, an application greeting a user with _Hello {username}!_ won't work unless the scope `user.read` is enabled. Note that applications should request only the list of permissions they truly need, otherwise a paranoid user could be discouraged from installing the application.
+Scopes define permissions for clients or applications. When a developer is creating an application, they choose a list of permissions (scopes) which will be granted to this application. For example, an application greeting a user with _Hello {username}!_ won't work unless the scope `user.read` is enabled. 
 
-Here is a list of all scopes with short description currently used in Mergado API. Each API endpoint is protected by at most one scope and if a client (an application) is not configured with that scope, it won't be able to request data from the endpoint (server returns `HTTP 403`).
+{: .info}
+**Important!** Applications should request only the list of permissions they truly need, otherwise a paranoid user could be discouraged from installing the application.
+
+In previous chapter on [authorization](authorization.html) we discussed the _online/offline mode_ and also mentioned the three types of applications. Now, it is very important to understand this concept, mainly that **in the offline mode, apps have different permissions than in the online mode**. The online mode is straightforward, all scopes can be used and will work as expected. In the offline mode, however, it is a bit more complicated, for example, an app with the `project` type isn't allowed to request data about any user. Why? Well, how could it? Of which user? The app acts on behalf of a project and no user is authenticated. Anyway, chances are it won't really be such a big problem in your case. And if it is, you can ask a question on our forum.
+
+In this chapter, we describe the scopes currently defined throughout Mergado to protect resources in our HTTP API. Each API endpoint is protected by at most one scope and if a client (an application) is not configured with that scope, it won't be able to request data from the endpoint (server returns `HTTP 403`). Note that we use the term _client_ as used in [RFC 6749](https://tools.ietf.org/html/rfc6749), which is usually an application in our case.
 
 ## User-specific scopes
 
-Note that scopes in this section still won't suffice for the client in the _offline mode_ unless the app's type is configured as `user` (see Authorization for details about application types and modes). That is because it does make no sense for an app of the type `project` to read users' data when no user is actually authenticated.
+Note that scopes in this section still won't suffice for the client in the _offline mode_ unless the app's type is configured as `user` (see [Authorization](authorization.html) for details about application types and modes). That is because it does make no sense for an app of the type `project` to read users' data when no user is actually authenticated.
 
 <div class="two-columns" markdown="1">
 <div class="left" markdown="1">
