@@ -17,7 +17,7 @@ Before you register a new app, you need to come up with a name and other informa
 
 * ``name`` – name of the app
 * ``type`` – type of the app, this can be somewhat hard to understand if you have never used Mergado before. There are three types:
-    - _for exports_ – the application is intended for exports and is also paid per export.
+    - _for exports_ – the application is intended for exports (or projects, we use this terms interchangeably) and is also paid per export.
     - _for eshops_ – the application is intended for eshops and is also paid for per eshop.
     - _for users_ – the application is intended for users and is also paid for per user.
 * ``color`` – a color of the app, it helps users with faster navigation, they will see the color in widgets and also in the apps' navigation bar
