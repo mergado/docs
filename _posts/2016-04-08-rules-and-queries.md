@@ -11,24 +11,24 @@ Rules are probably the most useful feature in Mergado. With queries, it provides
 
 ## Queries
 
-Queries are used to filter products by values of their elements. In Mergado, we implemented our own language called MQL (Mergado Query Language) which describes in what way to filter products in our database. For example, a query returning all products with price lower than 100 EUR looks like this in MQL:
+Queries are used to filter products by values of their elements. For this purpose, we implemented our own language abbreviated as MQL (Mergado Query Language). MQL helps to describe how to filter a set of products, similarly as SELECT statements in SQL. And in fact, all MQLs are always translated into SQL. For example, a query returning all products with price lower than 100 EUR looks like this in MQL:
 
 ```
 PRICE_VAT < 100
 ```
 
-In this query, `PRICE_VAT` is the name of the element in a project (or its XML feed). It is also possible to create more advanced queries. Here is a list of all possible operators:
+In the above query, `PRICE_VAT` is the name of an element in a project (which is often also the name in the project's input XML feed, however, elements can also be created manually in Mergado UI by users or in the API). Anyway, it's possible to create queries using a bit more advanced conditions. Here is a list of all possible operators:
 
-* `>`, `<`, `>=`, `<=`, `=`, `!=` – comparison
-* `~`, `!~` – comparison by regular expression
-* `IN`, `NOT IN` – comparison with a list of values (surrounded by parenthesis)
-* `OR`, `AND` – logical operators
+* `>`, `<`, `>=`, `<=`, `=`, `!=` -- comparison of values
+* `~`, `!~` -- comparison by regular expression
+* `IN`, `NOT IN` -- comparison with a list of values (surrounded by parenthesis)
+* `OR`, `AND` -- logical operators
 
-Names of elements can be escaped by square brackets, i.e. `[` and `]`. For example, the element `PARAM|color` can be used in MQL like this: `[PARAM|color] = 'red'`.
+Names of elements can be escaped using square brackets, i.e. `[` and `]`. For example, the element `PARAM|color` can be used in MQL like this: `[PARAM|color] = 'red'`.
 
 ## Rules
 
-All manipulation of products' data happens in rules. Rules allow the transformation from input data provided by eshop to output data sent to shopping services. The simplest rule is called `rewriting` which does nothing else than that it fills the output value of a product's element with a value. For instance, imagine you have a product like ThinkPad T440 and you want to lower its price. The rule `rewriting` is one way to do it and this is the action it performs:
+All manipulation of products' data happens in rules. Rules transform _input_ data (provided mostly by administrators in eshops or by marketing agencies) to _output_ data (usually consumed by services like Heureka.cz, Google Merchant and Zboží.cz). The simplest rule is called `rewriting` which does nothing else than that it fills the output value of a product's element with a value. For instance, imagine you have a product like ThinkPad T440 and you want to lower its price. The rule `rewriting` is one way to do it and this is the action it performs:
 
 ```
         input                      output
@@ -44,13 +44,13 @@ All manipulation of products' data happens in rules. Rules allow the transformat
     +------------+             +------------+
 ```
 
-The thing is that you don't want to lower prices of all products in your feed. That's where queries come into play as they are used to select only a portion of products in a feed.
+You usually don't want to lower prices of all products in your feed and that is where queries come into play as they are used to select only a portion of products in a feed.
 
 ### Instantiation and definition
 
-When we say _instantiate_ a rule, what we mean is that someone creates a rule that performs bulk modification of products in an XML feeds. This modification is done in a way that the user intends, for example, a rule's instance might lower prices of all products by 100 EUR. Such rule is probably not very useful but it shows what rule instances do: modify a project's or export's products.
+When we say _instantiate_ a rule, what we mean is that someone creates a rule that performs bulk modification of products in an XML feed. This modification is done in a way that the user intents by an instantiation, for example, a rule's instance might lower prices of all products by 100 EUR. Such rule is probably not very useful but it shows what rule instances do: modify a project's (export's) products.
 
-Another term we use is rule _definition_. Rule definitions are like classes in object-oriented programming while rule instances are like objects. A rule definition represents what a particular rule does and what parameters it requires in order to be instantiated.
+Another term we use is rule _definition_. Rule definitions are actually like classes in object-oriented programming, while rule instances are like objects. A rule definition represents what a particular rule does and what parameters it requires in order to be instantiated.
 
 For example, the definition of the rule `rewriting` looks like this:
 
@@ -68,12 +68,12 @@ For example, the definition of the rule `rewriting` looks like this:
 }
 ```
 
-As we mentioned previously, this rule rewrites the current value with a new one usually chosen by the user (or by an app). When you want an app to instantiate a new rule using [our API](http://docs.mergado.apiary.io/#reference/rules), you are required to provide the following information:
+As we mentioned previously, this rule rewrites the current value with a new one usually chosen by the user (or by an app). When you want an app to instantiate a new rule using [our API](http://docs.mergado.apiary.io/#reference/rules), you must provide the following information:
 
 - `type` -- The type of rule to instantiate.
 - `data` -- A list of objects in case of `1:N` relationship or an object in case of `1:1` relationship. Each object represents a rule-specific data for the rule instantiation. The field `fields` defines the name, type and other information of each field of the object for instantiation.
 
-In the case of the `rewriting` rule, a user or an app is required to provide the `new_content` field which is the value by which the output value of each selected product will be replaced.
+In the case of the `rewriting` rule, a user or an app provides the `new_content` field -- the value with which the output value of each selected product is replaced.
 
 ### Creating new rules by application
 
