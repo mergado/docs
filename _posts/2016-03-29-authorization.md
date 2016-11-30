@@ -89,7 +89,6 @@ These clients are typically implemented in a browser using a scripting language 
 
 To obtain an access token using the Implicit grant type, the following steps need to be taken:
 
-
 1. A client (application) sends a `GET` request to `https://app.mergado.com/oauth2/authorize/` with the following query string parameters:
    + `response_type` - `token`, this tells the authorization server that we want to use an implicit grant type, which will return an access token in the fragment of the URL.
    + `client_id` – An OAuth client ID.
@@ -106,7 +105,7 @@ To obtain an access token using the Implicit grant type, the following steps nee
    redirect_uri=https://appcloud.mergado.com
    ```
 
-2. The authorization server redirects to `redirect_uri` with an access token in the fragment of URL:
+2. The authorization server redirects to `redirect_uri` with an access token in the fragment of URL.
 
    **Example:**
 
