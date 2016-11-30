@@ -7,7 +7,7 @@ active_item: ""
 order: 1
 ---
 
-*Mergado Flavored Markdown* is an extension of GitHub Flavored Markdown that will enable you to easily add your app's screenshots (or other images) and videos.
+*Mergado Flavored Markdown* is an extension of [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/) that will enable you to easily add your app's screenshots (or other images) and videos.
 This can be used by you to give *that extra touch* to your app's description or help.
 
 ## Images
