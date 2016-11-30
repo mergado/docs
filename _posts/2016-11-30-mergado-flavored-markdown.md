@@ -24,4 +24,4 @@ This macro, where you put a list of image URLs separated by a comma (`,`) will c
 ```
 {youtube=DLzxrzFCyOs}
 ```
-This macro will embed a YouTube video `<iframe>` pointing at the video available here: https://www.youtube.com/watch?v=DLzxrzFCyOs
+This macro will embed a YouTube video `<iframe>` containing the video here: https://www.youtube.com/watch?v=DLzxrzFCyOs.
