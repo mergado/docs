@@ -35,6 +35,7 @@ menu_items: [
 # Default categories (in order) to appear in the navigation
 sections: [
     ['intro', 'Getting Started'],
+    ['developers', 'Developers'],
     ['apps', 'Developing Apps'],
     ['api', 'API Reference'],
 ]
