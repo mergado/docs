@@ -98,7 +98,7 @@ To obtain an access token using the Implicit grant type, the following steps nee
 
    **Example:**
 
-	```
+   ```
    https://app.mergado.com/oauth2/authorize/?
    response_type=token&
    client_id=123&
