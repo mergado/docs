@@ -97,6 +97,7 @@ To obtain an access token using the Implicit grant type, the following steps nee
 	+ `entity_id` – ID of the entity the client wants access to.
 
 **Example**:
+
 ```
 https://app.mergado.com/oauth2/authorize/?
 response_type=token&
@@ -104,9 +105,11 @@ client_id=123&
 entity_id=123&
 redirect_uri=https://appcloud.mergado.com
 ```
+
 2. The authorization server redirects to `redirect_uri` with an access token in the fragment of URL:
 
 **Example**:
+
 ```
 https://appcloud.mergado.com/#
 access_token=f841a16676a2fa66222a3d70faae92c70f78fc65&
