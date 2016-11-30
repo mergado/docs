@@ -81,3 +81,36 @@ In offline mode, the access token is obtained by the following steps:
 
 {: .info}
 **Important!** Access tokens obtained in the offline mode have somewhat different permissions than tokens obtained in the online mode. Permissions in the offline mode depend on the type of application (or the entity type). For example, if an application is created for eshops (entity type is `shop`) in the offline mode, it won't be able to access information of any user since the access token is created on behalf of an eshop. In the online mode, a protected resource is always accessed on behalf of an end-user - this means that with the appropriate scope, an application can access this user's information.
+
+## Implicit grant type
+
+The implicit grant type is used to obtain access tokens (it does not support the issuance of refresh tokens) and is optimized for public clients known to operate a particular redirection URI.
+These clients are typically implemented in a browser using a scripting language such as JavaScript.
+
+To obtain an access token using the Implicit grant type, the following steps need to be taken:
+
+
+1. A client (application) sends a `GET` request to `https://app.mergado.com/oauth2/authorize/` with the following query string parameters:
+	+ `response_type` - `token`, this tells the authorization server that we want to use an implicit grant type, which will return an access token in the fragment of the URL.
+	+ `client_id` – An OAuth client ID.
+	+ `redirect_uri` – Redirection URI to which the authorization server will send the end-user back once access is granted (or denied).
+	+ `entity_id` – ID of the entity the client wants access to.
+
+**Example**:
+```
+https://app.mergado.com/oauth2/authorize/?
+response_type=token&
+client_id=123&
+entity_id=123&
+redirect_uri=https://appcloud.mergado.com
+```
+2. The authorization server redirects to `redirect_uri` with an access token in the fragment of URL:
+
+**Example**:
+```
+https://appcloud.mergado.com/#
+access_token=f841a16676a2fa66222a3d70faae92c70f78fc65&
+expires_in=3600&
+token_type=bearer&entity_id=123&
+user_id=456
+```
