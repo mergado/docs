@@ -16,11 +16,11 @@ In the Developers Center, you must first confirm that you want to develop new ap
 Before you register a new app, you need to figure out a name, a type of the app and other information:
 
 * `name` -- name of the app
-* `type` -- type of the app, this is explained in the [Basics](the-basics.html)
+* `type` -- type of the app, each type is explained in the [Basics](the-basics.html)
 * `color` -- a color of the app, it helps users with faster navigation, they will see the color in widgets and also in the apps' navigation bar
-* `trial period`
+* `trial period` -- trial period, if you don't know, we recommend 10 days
 * `oauth2 scopes` -- list of oauth2 scopes which the app is authorized to use
-* `countries` -- in which countries the app is available
+* `countries` -- countries to make the app available in
 
 {: .warning}
 You won't be able to change the `name` and `type` after the registration of the app. However, other information like `color` or `trial period` can be changed anytime, so you don't need to worry about that at this point and can decide later in the development process.
@@ -31,11 +31,11 @@ As soon as you finished the registration of a new app, MySQL, SSH and OAuth2 cre
 
 ### Connecting to the DB
 
-You can connect to the DB via [Adminer](https://appcloud.mergado.com/adminer/) which runs on our own server.
+You can connect to the DB via [Adminer](https://appcloud.mergado.com/adminer/) running on our own server.
 
 ### Accessing app's repository
 
-On Linux and Mac, a repository can be accessed via SSH by running the following command from terminal:
+On Linux and Mac, a repository can be accessed via SSH by running the following command in terminal:
 
 ```bash
 $ ssh <username>@appcloud.mergado.com

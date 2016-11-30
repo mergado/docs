@@ -4,7 +4,7 @@ title: "Rules and Queries"
 category: apps
 date: 2016-04-08 15:02:14
 active_item: ""
-order: 4
+order: 1
 ---
 
 Rules are probably the most useful feature in Mergado. With queries, it provides a tool for fast and easy modification of products' data.
