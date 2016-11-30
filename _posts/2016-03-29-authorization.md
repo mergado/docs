@@ -91,29 +91,29 @@ To obtain an access token using the Implicit grant type, the following steps nee
 
 
 1. A client (application) sends a `GET` request to `https://app.mergado.com/oauth2/authorize/` with the following query string parameters:
-	+ `response_type` - `token`, this tells the authorization server that we want to use an implicit grant type, which will return an access token in the fragment of the URL.
-	+ `client_id` – An OAuth client ID.
-	+ `redirect_uri` – Redirection URI to which the authorization server will send the end-user back once access is granted (or denied).
-	+ `entity_id` – ID of the entity the client wants access to.
+   + `response_type` - `token`, this tells the authorization server that we want to use an implicit grant type, which will return an access token in the fragment of the URL.
+   + `client_id` – An OAuth client ID.
+   + `redirect_uri` – Redirection URI to which the authorization server will send the end-user back once access is granted (or denied).
+   + `entity_id` – ID of the entity the client wants access to.
 
-	**Example**:
+   **Example:**
 
 	```
-	https://app.mergado.com/oauth2/authorize/?
-	response_type=token&
-	client_id=123&
-	entity_id=123&
-	redirect_uri=https://appcloud.mergado.com
-	```
+   https://app.mergado.com/oauth2/authorize/?
+   response_type=token&
+   client_id=123&
+   entity_id=123&
+   redirect_uri=https://appcloud.mergado.com
+   ```
 
 2. The authorization server redirects to `redirect_uri` with an access token in the fragment of URL:
 
-	**Example**:
+   **Example:**
 
-	```
-	https://appcloud.mergado.com/#
-	access_token=f841a16676a2fa66222a3d70faae92c70f78fc65&
-	expires_in=3600&
-	token_type=bearer&entity_id=123&
-	user_id=456
-	```
+   ```
+   https://appcloud.mergado.com/#
+   access_token=f841a16676a2fa66222a3d70faae92c70f78fc65&
+   expires_in=3600&
+   token_type=bearer&entity_id=123&
+   user_id=456
+   ```
