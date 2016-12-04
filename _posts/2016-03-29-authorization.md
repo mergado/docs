@@ -15,7 +15,7 @@ If you are familiar with the OAuth protocol, you already know that with every ac
 
 ## Online mode
 
-An access token is obtained using the `autherization_code` grant defined in the OAuth 2.0 authorization framework. This mode is used when the end-user (aka the resource owner) is capable of receiving incoming requests (typically via redirection in a web browser). If the end-user is not interacting with a web browser (i.e. is not currently working in Mergado) but an application needs to access a protected resource, the `refresh_token` grant described in the _Offline Mode_ section must be used.
+An access token is obtained using the `authorization_code` grant defined in the OAuth 2.0 authorization framework. This mode is used when the end-user (aka the resource owner) is capable of receiving incoming requests (typically via redirection in a web browser). If the end-user is not interacting with a web browser (i.e. is not currently working in Mergado) but an application needs to access a protected resource, the `refresh_token` grant described in the _Offline Mode_ section must be used.
 
 To obtain an access token using the `authorization_code` grant type, the following steps need to be taken:
 
@@ -36,7 +36,7 @@ To obtain an access token using the `authorization_code` grant type, the followi
    &grant_type=authorization_code
    ```
 2. Authorization server redirects to the given redirection URI with a newly created authorization code (e.g. `https://app.mergado.com/?code=jkl`).
-3. A client (application) send a POST request to `https://app.mergado.com/oauth2/token/` with the following JSON encoded fields:
+3. A client (application) sends a POST request to `https://app.mergado.com/oauth2/token/` with the following JSON encoded fields:
     + `client_id` -- An OAuth client ID.
     + `client_secret` -- An OAuth secret key.
     + `redirect_uri` -- Redirection URI to which the authorization server will send the end-user back once access is granted (or denied).
