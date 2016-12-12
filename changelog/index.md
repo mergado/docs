@@ -8,10 +8,25 @@ active_item: "changelog"
 All notable changes to this project will be documented in this file.
 
 ## Mergado Apps 0.2.5
-- 2016-11-30
+- 2016-12-08
 
 ### Added
-- Implicit grant type authorization
+- Implicit grant type authorization.
+- Long description of an app can be edited directly in the Developer Center. And it supports _Mergado Flavored Markdown_, which can be used to create a gallery of images or to insert a Youtube video.
+- For each app it is now possible to configure the following:
+  + A help page displayed in Mergado Store.
+  + A link to a dedicated category on our Mergado Forum.
+  + A defined set of keywords and a slogan for improving SEO in the Mergado Store.
+- Added more information to app's homepage.
+- Vendors now have their "homepage" in Mergado Store.
+
+### Fixed
+- Correct scope required in the API endpoint used to create new rules.
+- Fixed the `shop.ga.read` scope support.
+
+### Changed
+
+- Slightly modified the appearance of widgets.
 
 ## Mergado Apps 0.2.4
 - 2016-09-29
