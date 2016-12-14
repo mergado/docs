@@ -28,7 +28,7 @@ mergadomail: 'mergado@mergado.cz'
 # Default menu items (on order) to appear in the menu
 menu_items: [
     ['', 'Documentation'],
-    ['changelog', 'Change Log'],
+    ['changelog', 'Changelog'],
     ['support', 'Support'],
 ]
 

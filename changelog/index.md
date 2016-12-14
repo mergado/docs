@@ -1,10 +1,16 @@
 ---
 layout: page_toc
-title: "Change Log"
+title: "Changelog"
 active_item: "changelog"
 ---
 
-# Change Log
+# Roadmap
+
+## Planned features
+
+- Ability to send back an optional message back to the user when an app is not able to be enabled/disabled.
+
+# Changelog
 All notable changes to this project will be documented in this file.
 
 ## Mergado Apps 0.2.5
