@@ -9,6 +9,8 @@ active_item: "changelog"
 ## Planned features
 
 - Ability to send back an optional message back to the user when an app is not able to be enabled/disabled.
+- Support for restricted Markdown (bold, italic and links) in body of notifications sent via the API.
+- Scraping more data from [sluzby.heureka.cz](https://sluzby.heureka.cz), [sluzby.heureka.sk](https://sluzby.heureka.sk) and [admin.zbozi.cz](https://admin.zbozi.cz).
 
 # Changelog
 All notable changes to this project will be documented in this file.
