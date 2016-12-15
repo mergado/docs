@@ -17,8 +17,8 @@ active_item: "changelog"
 ### 2017
 
 - Improve application-defined rules API and management in the Developer Center.
-- Nice support to log events with Sentry.
-- Redis cache for applications.
+- Support for logging events in applications using [Sentry](https://github.com/getsentry).
+- Redis cache for individual applications.
 - Mergado UI CSS framework.
 - New or extended sources of statistics, e.g. Sklik, AdWords, Zbozi.cz, Heureka, Glami.
 - Users reviews of apps.
