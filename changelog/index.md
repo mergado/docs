@@ -8,11 +8,25 @@ active_item: "changelog"
 
 ## Planned features
 
+### January 2017
+
 - Ability to send back an optional message back to the user when an app is not able to be enabled/disabled.
 - Support for restricted Markdown (bold, italic and links) in body of notifications sent via the API.
 - Scraping more data from [sluzby.heureka.cz](https://sluzby.heureka.cz), [sluzby.heureka.sk](https://sluzby.heureka.sk) and [admin.zbozi.cz](https://admin.zbozi.cz).
 
+### 2017
+
+- Improve application-defined rules API and management in the Developer Center.
+- Nice support to log events with Sentry.
+- Redis cache for applications.
+- Mergado UI CSS framework.
+- New or extended sources of statistics, e.g. Sklik, AdWords, Zbozi.cz, Heureka, Glami.
+- Users reviews of apps.
+- Improvements in developers' profiles, e.g. banner, logo, bio.
+- New features on Store's homepage, e.g. filters, search, categories and labels, favorite apps, etc.
+
 # Changelog
+
 All notable changes to this project will be documented in this file.
 
 ## Mergado Apps 0.2.5
