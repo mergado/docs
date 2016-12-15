@@ -17,14 +17,14 @@ active_item: "changelog"
 
 ### 2017
 
-- Improve application-defined rules API and management in the Developer Center.
+- Improve application-defined rules API and their management in the Developer Center.
 - Support for logging events in applications using [Sentry](https://github.com/getsentry).
 - Redis cache for individual applications.
 - Mergado UI CSS framework.
 - New or extended sources of statistics, e.g. Sklik, AdWords, Zbozi.cz, Heureka, Glami.
-- Users reviews of apps.
-- Improvements in developers' profiles, e.g. banner, logo, bio.
-- New features on Store's homepage, e.g. filters, search, categories and labels, favorite apps, etc.
+- Reviews of apps by users.
+- Improvements of the vendor profile, e.g. a banner, a logo, a developer's bio.
+- New features on the Store homepage, e.g. filters, a search box, categories and labels, favorite apps, etc.
 
 # Changelog
 
