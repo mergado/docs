@@ -30,7 +30,7 @@ All notable changes to this project will be documented in this file.
 - 2017-01-11
 
 ### Added
-- Ability to send back an optional message back to the user when an app is not able to be enabled/disabled.
+- Ability to return an optional message to the user when an app could not be enabled or disabled.
 - A new field `created_at` in the product API resource which holds the date when the product was imported into Mergado. Note that this information is available only for newly imported products.
 - Notifications in the Mergado UI sent by apps are rendered with their logo shown along with the message of the notification.
 - Developers will be notified (in the Mergado notification center and by an email) when release requests of their apps are approved or rejected.
