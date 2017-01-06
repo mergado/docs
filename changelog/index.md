@@ -34,7 +34,7 @@ All notable changes to this project will be documented in this file.
 - A new field `created_at` in the product API resource which holds the date when the product was imported into Mergado. Note that this information is available only for newly imported products.
 - Notifications in the Mergado UI sent by apps are rendered with their logo shown along with the message of the notification.
 - Developers will be notified (in the Mergado notification center and by an email) when release requests of their apps are approved or rejected.
-- Support for a new tag `{tip} ... {/tip}` in the [Mergado Flavored Markdown's](http://mergado.github.io/docs/developers/markdown.html).
+- Support for a new tag `{tip} ... {/tip}` in [Mergado Flavored Markdown](http://mergado.github.io/docs/developers/markdown.html).
 
 ### Fixed
 - Server error when creating a new rule with unknown `app_rule_type`.
