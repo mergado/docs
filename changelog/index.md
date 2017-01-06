@@ -6,18 +6,16 @@ active_item: "changelog"
 
 # Roadmap
 
-## January 2017
+## February 2017
 
-- Ability to send back an optional message back to the user when an app is not able to be enabled/disabled.
 - Support for restricted Markdown (bold, italic and links) in body of notifications sent via the API.
 - Scraping more data from [sluzby.heureka.cz](https://sluzby.heureka.cz), [sluzby.heureka.sk](https://sluzby.heureka.sk) and [admin.zbozi.cz](https://admin.zbozi.cz).
-- Support for a new tag `{tip} ... {/tip}` in the [Mergado Flavored Markdown's](http://mergado.github.io/docs/developers/markdown.html). 
+- Support for logging events in applications using [Sentry](https://github.com/getsentry).
+- Redis cache for individual applications.
 
 ## 2017
 
 - Improve application-defined rules API and their management in the Developer Center.
-- Support for logging events in applications using [Sentry](https://github.com/getsentry).
-- Redis cache for individual applications.
 - Mergado UI CSS framework.
 - New or extended sources of statistics, e.g. Sklik, AdWords, Zbozi.cz, Heureka, Glami.
 - Reviews of apps by users.
@@ -27,6 +25,19 @@ active_item: "changelog"
 # Changelog
 
 All notable changes to this project will be documented in this file.
+
+## Mergado Apps 0.3.0
+- 2017-01-11
+
+### Added
+- Ability to send back an optional message back to the user when an app is not able to be enabled/disabled.
+- A new field `created_at` in the product API resource which holds the date when the product was imported into Mergado. Note that this information is available only for newly imported products.
+- Notifications in the Mergado UI sent by apps are rendered with their logo shown along with the message of the notification.
+- Developers will be notified (in the Mergado notification center and by an email) when release requests of their apps are approved or rejected.
+- Support for a new tag `{tip} ... {/tip}` in the [Mergado Flavored Markdown's](http://mergado.github.io/docs/developers/markdown.html).
+
+### Fixed
+- Server error when creating a new rule with unknown `app_rule_type`.
 
 ## Mergado Apps 0.2.5
 - 2016-12-08
