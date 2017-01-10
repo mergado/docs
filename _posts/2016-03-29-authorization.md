@@ -24,7 +24,7 @@ To obtain an access token using the `authorization_code` grant type, the followi
     + `redirect_uri` -- Redirection URI to which the authorization server will send the end-user back once access is granted (or denied).
     + `grant_type` -- `authorization_code`.
     + `response_type` -- `code`, this tells the authorization server that we want to return an authorization code which will be exchanged with an access token.
-    + `entity_id` -- ID of the entity the client wants access to. `entity_id` **must** be provided if your app is of `project` or `shop` type. `entity_id` **must not** be provided if your app is of the `user` type. In that case `entity_id` will be the same as ID of the user that is currently logged in.
+    + `entity_id` -- ID of the entity the client wants access to. `entity_id` **must** be provided if your app is of `project` or `shop` type. `entity_id` **must not** be provided if your app is of the `user` type. In that case `entity_id` will be the same as ID of the end-user that is currently logged in.
    
    **Example:**
 
