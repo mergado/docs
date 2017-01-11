@@ -32,12 +32,14 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Ability to return an optional message to the user when an app could not be enabled or disabled.
 - A new field `created_at` in the product API resource which holds the date when the product was imported into Mergado. Note that this information is available only for newly imported products.
+- Added field `connections` to eshop info resource which holds information about connected services. The fields `is_connected_to_<name_of_service>` are deprecated now.
 - Notifications in the Mergado UI sent by apps are rendered with their logo shown along with the message of the notification.
 - Developers will be notified (in the Mergado notification center and by an email) when release requests of their apps are approved or rejected.
 - Support for a new tag `{tip} ... {/tip}` in [Mergado Flavored Markdown](http://mergado.github.io/docs/developers/markdown.html).
 
 ### Fixed
 - Server error when creating a new rule with unknown `app_rule_type`.
+- Server error when requesting access token in offline mode with an app of type `user`.
 
 ## Mergado Apps 0.2.5
 - 2016-12-08
