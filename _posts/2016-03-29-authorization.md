@@ -24,7 +24,7 @@ To obtain an access token using the `authorization_code` grant type, the followi
     + `redirect_uri` -- Redirection URI to which the authorization server will send the end-user back once access is granted (or denied).
     + `grant_type` -- `authorization_code`.
     + `response_type` -- `code`, this tells the authorization server that we want to return an authorization code which will be exchanged with an access token.
-    + `entity_id` -- ID of the entity the client wants access to.
+    + `entity_id` -- ID of the entity the client wants access to. `entity_id` **must** be provided if your app is of `project` or `shop` type. `entity_id` **must not** be provided if your app is of the `user` type. In that case `entity_id` will be the same as ID of the end-user that is currently logged in.
    
    **Example:**
 
@@ -34,6 +34,7 @@ To obtain an access token using the `authorization_code` grant type, the followi
    &redirect_uri=https://appcloud.mergado.com
    &response_type=code
    &grant_type=authorization_code
+   &entity_id=456
    ```
 2. Authorization server redirects to the given redirection URI with a newly created authorization code (e.g. `https://app.mergado.com/?code=jkl`).
 3. A client (application) sends a POST request to `https://app.mergado.com/oauth2/token/` with the following JSON encoded fields:
@@ -97,11 +98,11 @@ To obtain an access token using the Implicit grant type, the following steps nee
    **Example:**
 
    ```
-   https://app.mergado.com/oauth2/authorize/?
-   response_type=token&
-   client_id=123&
-   entity_id=123&
-   redirect_uri=https://appcloud.mergado.com
+   https://app.mergado.com/oauth2/authorize/
+   ?response_type=token
+   &client_id=123
+   &entity_id=123
+   &redirect_uri=https://appcloud.mergado.com
    ```
 
 2. The authorization server redirects to `redirect_uri` with an access token in the fragment of URL.
@@ -109,9 +110,9 @@ To obtain an access token using the Implicit grant type, the following steps nee
    **Example:**
 
    ```
-   https://appcloud.mergado.com/#
-   access_token=f841a16676a2fa66222a3d70faae92c70f78fc65&
-   expires_in=3600&
-   token_type=bearer&entity_id=123&
-   user_id=456
+   https://appcloud.mergado.com/
+   #access_token=f841a16676a2fa66222a3d70faae92c70f78fc65
+   &expires_in=3600
+   &token_type=bearer&entity_id=123
+   &user_id=456
    ```
