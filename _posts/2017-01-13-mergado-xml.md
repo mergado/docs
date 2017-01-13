@@ -44,7 +44,7 @@ CATEGORY_ID | ID of the category. | ID | - | -
 CATEGORY_URL | URL of the category. | URL | - | -
 CPC | Cost per click. | Number | - | -
 CPC_FULLTEXT | Cost per click in fulltext. | Number | - | -
-CONDITION | Condition of the peroduct. Possible values are new, refurbished, used | Enum | - | -
+CONDITION | Condition of the product. Possible values are new, refurbished, used | Enum | - | -
 CUSTOM_LABEL | Optional label of the product. | Text | - | Yes
 DELIVERY_DAYS | Number of days to deliver the product. „0“ means the product is in stock. | Number | - | -
 DELIVERY | Type of delivery service. Contains subelements ID, PRICE and PRICE_COD while ID and one of the others is required. | - | - | Yes
