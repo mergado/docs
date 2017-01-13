@@ -71,16 +71,16 @@ PRIORITY | Decimal number between 0 and 1. Describes significance of the product
 PRODUCER | Producer of the product. If the brand is Panasonic, it might be the producer Matsushita. | Text | - | -
 PRODUCTNO | Product number. | Text | - | -
 RELEASE_DATE | The date of official release of the product. | Date | - | -
-URL | A URL of the product in eshop. | URL | Yes | -
-URL_ADWORDS | A URL of the product that includes tracking parameters for AdWords. | URL | - | -
-URL_MOBILE | A URL of mobile version of the product in eshop. | URL | - | -
+URL | URL of the product in eshop. | URL | Yes | -
+URL_ADWORDS | URL of the product that includes tracking parameters for AdWords. | URL | - | -
+URL_MOBILE | URL of mobile version of the product in eshop. | URL | - | -
 PRICE | Price of the product without VAT. | Number | - | -
 PRICE_VAT | Price of the product with VAT. | Number | - | -
 PRICE_RETAIL | Retail price of the product without VAT. | Number | - | -
 PRICE_RETAIL_VAT | Retail price of the product with VAT. | Number | - | -
 SHIPPING_LABEL | Optional label for the delivery. | Text | - | -
 SHIPPING_SIZE | Dimensions of the product in the format: length x width x height. Units: in, ft, cm, m. | Text | - | -
-SHIPPING_WEIGHT | Weight of the product. Units are lb, oz, g, kg. | Number | - | -
+SHIPPING_WEIGHT | Weight of the product. Units: lb, oz, g, kg. | Number | - | -
 VAT | Value added tax, absolute number. | Number | - | -
 VIDEO | A URL of a video of the product. | URL | - | -
 VIDEO_ALTERNATIVE | Additional URL of a video of the product. | URL | - | Yes
