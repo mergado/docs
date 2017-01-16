@@ -35,7 +35,7 @@ All notable changes to this project will be documented in this file.
 - Added field `connections` to eshop info resource which holds information about connected services. The fields `is_connected_to_<name_of_service>` are deprecated now.
 - Notifications in the Mergado UI sent by apps are rendered with their logo shown along with the message of the notification.
 - Developers will be notified (in the Mergado notification center and by an email) when release requests of their apps are approved or rejected.
-- Support for a new tag `{tip} ... {/tip}` in [Mergado Flavored Markdown](http://mergado.github.io/docs/developers/markdown.html).
+- Support for a new tag `{tip} ... {/tip}` in [Mergado Flavored Markdown]({{ site.baseurl }}/developers/markdown.html).
 
 ### Fixed
 - Server error when creating a new rule with unknown `app_rule_type`.
