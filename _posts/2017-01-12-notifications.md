@@ -11,6 +11,7 @@ Notifications in Mergado can be used to notify user about events that need user'
 
 ## Channels
 There are two ways to notify a user. These ways are called channels.
+
 - email -- Notification is sent to the user's email.
 - frontend -- Notification is shown in the Mergado's notification panel.
 
@@ -18,6 +19,7 @@ Default channel is _frontend_.
 
 ## Priorities
 Priority of notification determines the importance of notification. Users can configure what notification and how often they want to receive each notification with given priority.
+
 - low
 - medium
 - high
@@ -26,6 +28,7 @@ Default priority is _medium_.
 
 ## Scopes
 Scopes define who will receive the notification.
+
 - shop -- Notification is sent to all users who can access the eshop.
 - owner -- Notification is sent only to the owner of the eshop.
 - user --  Notification is sent to single user.
