@@ -88,6 +88,9 @@ Each application can define one rule or several rules by exposing a URL. This UR
     "data": [
         {
             "id": "123",
+            "created_at": "2016-03-27T17:18:45+00:00",
+            "updated_at": "2016-04-28T17:18:50+00:00",
+            "output_changed_at": null,
             "data": {
                 "ITEM_ID": "890",
                 "PRODUCTNAME": "Amazon Kindle Paperwhite 3",
@@ -99,6 +102,9 @@ Each application can define one rule or several rules by exposing a URL. This UR
         },
         {
             "id": "234",
+            "created_at": "2016-01-07T13:56:42+00:00",
+            "updated_at": "2016-04-28T17:18:50+00:00",
+            "output_changed_at": null,
             "data": {
                 "ITEM_ID": "530",
                 "PRODUCTNAME": "Epson LX 100 EPS",
