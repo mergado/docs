@@ -6,12 +6,11 @@ active_item: "changelog"
 
 # Roadmap
 
-## February 2017
+## March 2017
 
-- Support for restricted Markdown (bold, italic and links) in body of notifications sent via the API.
-- Scraping more data from [sluzby.heureka.cz](https://sluzby.heureka.cz), [sluzby.heureka.sk](https://sluzby.heureka.sk) and [admin.zbozi.cz](https://admin.zbozi.cz).
-- Support for logging events in applications using [Sentry](https://github.com/getsentry).
-- Redis cache for individual applications.
+- Support for tracking codes in advertisement systems, etc. inside developers.
+- User-centered improvements of the Mergado Store.
+- Support of the `medium` query string parametr in the Google Analytics API endpoint.
 
 ## 2017
 
@@ -25,6 +24,18 @@ active_item: "changelog"
 # Changelog
 
 All notable changes to this project will be documented in this file.
+
+## Mergado Apps 0.3.1
+- 2017-02-08
+
+### Added
+- Support for restricted Markdown (bold, italic and links) in body of notifications sent via the API.
+- New data and information is being scraped from [sluzby.heureka.cz](https://sluzby.heureka.cz), [sluzby.heureka.sk](https://sluzby.heureka.sk) and [admin.zbozi.cz](https://admin.zbozi.cz). This scraped data is collected every day and is available in the _Eshop Statistics_ API endpoint.
+- Preinstalled [Sentry](https://github.com/getsentry) server for event logging is available on [App Cloud](https://appcloud.mergado.com/sentry/).
+- [Redis](https://redis.io/) (in-memory data store) for individual applications which can be used, for example, as a cache or a message broker.
+- Developers may use `crontab` command in the dev stage of an app. The file is deployed on production when the app is released.
+- In rules defined by apps, Mergado sends products to a specified hook with a few additional fields: `created_at`, `updated_at` and `output_changed_at`. See [Rules and Queries]({{ site.baseurl }}/apps/rules-and-queries.html).
+- Mergado supports several new XML feed formats (Mailkit, CJ.com, and the specification of Shopalike was updated in Mergado).
 
 ## Mergado Apps 0.3.0
 - 2017-01-11
