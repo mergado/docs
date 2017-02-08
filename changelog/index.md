@@ -37,6 +37,9 @@ All notable changes to this project will be documented in this file.
 - In rules defined by apps, Mergado sends products to a specified hook with a few additional fields: `created_at`, `updated_at` and `output_changed_at`. See [Rules and Queries]({{ site.baseurl }}/apps/rules-and-queries.html).
 - Mergado supports several new XML feed formats (Mailkit, CJ.com, and the specification of Shopalike was updated in Mergado).
 
+### Fixed
+- The [List Project Rules](http://docs.mergado.apiary.io/#reference/core/rules/list-project-rules) endpoint, see issue [#36](https://github.com/mergado/mergado-apps/issues/36).
+
 ## Mergado Apps 0.3.0
 - 2017-01-11
 
