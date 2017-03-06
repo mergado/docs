@@ -6,24 +6,34 @@ active_item: "changelog"
 
 # Roadmap
 
-## March 2017
-
-- Support for tracking codes in advertisement systems, etc. inside developers.
-- User-centered improvements of the Mergado Store.
-- Support of the `medium` query string parametr in the Google Analytics API endpoint.
-
 ## 2017
 
 - Improve application-defined rules API and their management in the Developer Center.
 - Mergado UI CSS framework.
 - New or extended sources of statistics, e.g. Sklik, AdWords, Zbozi.cz, Heureka, Glami.
 - Reviews of apps by users.
+- User-centered improvements of the Mergado Store.
 - Improvements of the vendor profile, e.g. a banner, a logo, a developer's bio.
 - New features on the Store homepage, e.g. filters, a search box, categories and labels, favorite apps, etc.
 
 # Changelog
 
 All notable changes to this project will be documented in this file.
+
+## Mergado Apps 0.3.2
+- 2017-03-08
+
+## Added
+
+- Support for measurements of conversions in the advertising systems AdWords, Sklik and Facebook for apps in Mergado Store.
+- Support for [Ecommerce Tracking](https://developers.google.com/analytics/devguides/collection/analyticsjs/ecommerce) in Mergado Store when apps are being enabled.
+- Support of the `medium` query string parametr in the Google Analytics API endpoint.
+
+### Fixed
+
+- Markdown in email notifications.
+- The generation of access token for offline mode if an app is of the type `user`.
+- Rewritting URL of rules during app release.
 
 ## Mergado Apps 0.3.1
 - 2017-02-08
