@@ -31,7 +31,7 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
-- Markdown in email notifications.
+- Markdown in email notifications supports more than one hyperlink.
 - The generation of access token for offline mode if an app is of the type `user`.
 - Rewritting URL of rules during app release.
 
@@ -41,7 +41,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Support for restricted Markdown (bold, italic and links) in body of notifications sent via the API.
 - New data and information is being scraped from [sluzby.heureka.cz](https://sluzby.heureka.cz), [sluzby.heureka.sk](https://sluzby.heureka.sk) and [admin.zbozi.cz](https://admin.zbozi.cz). This scraped data is collected every day and is available in the _Eshop Statistics_ API endpoint.
-- Preinstalled [Sentry](https://github.com/getsentry) server for event logging is available on [App Cloud](https://appcloud.mergado.com/sentry/).
+- Preinstalled [Sentry](https://github.com/getsentry) server for event logging is available on [App Cloud](https://sentry-appcloud.mergado.com).
 - [Redis](https://redis.io/) (in-memory data store) for individual applications which can be used, for example, as a cache or a message broker.
 - Developers may use `crontab` command in the dev stage of an app. The file is deployed on production when the app is released.
 - In rules defined by apps, Mergado sends products to a specified hook with a few additional fields: `created_at`, `updated_at` and `output_changed_at`. See [Rules and Queries]({{ site.baseurl }}/apps/rules-and-queries.html).
