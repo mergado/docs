@@ -37,11 +37,13 @@ For example the `user` type app can be something like a notebook where a user ca
 
 ## Hosting apps
 
-All applications are hosted on _Mergado App Cloud_. Each application has its own repository and a database. App Cloud also helps developers test and develop their applications, i.e. there is no need to install Apache and PHP on localhost. The development environment can be accessed with SFTP or SSH.
+All applications are hosted on _App Cloud_. Each application has its own repository and a database. App Cloud also helps developers test and develop their applications, i.e. there is no need to install Apache and PHP on localhost. The development environment can be accessed with SFTP or SSH.
 
 ### Supported technologies
 
-Currently, applications written on Mergado platform can be written only in **PHP** and only **MySQL** is supported for data storage. Other programming languages (e.g. Python) and databases (e.g. PostgreSQL, Redis) are planned in the future.
+Currently, applications running on Mergado platform can be written only in **PHP**, and only **MySQL** and **Redis** is supported for data storage. Other programming languages (e.g. Python) and databases (e.g. PostgreSQL) are planned in the future.
+
+Additionally, developers are allowed to set up Cron for job-scheduling (`crontab` command). We also host our own pre-installed Sentry instance for logging events which can be used freely by developers. Sentry is available at [https://sentry-appcloud.mergado.com](https://sentry-appcloud.mergado.com/).
 
 ## Setting up a new app
 
