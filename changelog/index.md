@@ -23,7 +23,7 @@ All notable changes to this project will be documented in this file.
 ## Mergado Apps 0.3.2
 - 2017-03-08
 
-## Added
+### Added
 
 - Support for measurements of conversions in the advertising systems AdWords, Sklik and Facebook for apps in Mergado Store.
 - Support for [Ecommerce Tracking](https://developers.google.com/analytics/devguides/collection/analyticsjs/ecommerce) in Mergado Store when apps are being enabled.
