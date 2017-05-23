@@ -20,6 +20,24 @@ active_item: "changelog"
 
 All notable changes to this project will be documented in this file.
 
+## Mergado Apps 0.3.3
+- 2017-05-24
+
+### Added
+
+- Status of connection with linked shopping services to _Shop Info_ API endpoint.
+- API endpoint containg the list of all available tariffs in Mergado.
+- API endpoint for updating the _Shop_ collection.
+- Upload of images using the Markdown editor via drag&drop.
+- Screenshots and logos of apps can now be uploaded directly in the Developer Center.
+
+### Fixed
+
+- Running tasks on read-only projects results in the right HTTP status code.
+- Passing empty values to the `limit` and `offset` fields in a GET request does not result in a 500 HTTP status.
+- After a rule is created or updated via a PATCH or POST request, the change of a project's rules is recorded on the backend and the rule is correctly applied to products during the next scheduled application of rules.
+- Losses of connections to Redis in PHP due to [a bug in RHEL 7](https://access.redhat.com/blogs/766093/posts/1976243).
+
 ## Mergado Apps 0.3.2
 - 2017-03-08
 
