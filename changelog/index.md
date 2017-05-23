@@ -28,6 +28,7 @@ All notable changes to this project will be documented in this file.
 - Status of connection with linked shopping services to _Shop Info_ API endpoint.
 - API endpoint containg the list of all available tariffs in Mergado.
 - API endpoint for updating the _Shop_ collection.
+- New API endpoints for requesting a list of enabled apps by a user, in an eshop or in a project.
 - Upload of images using the Markdown editor via drag&drop.
 - Screenshots and logos of apps can now be uploaded directly in the Developer Center.
 
