@@ -15,8 +15,8 @@ product feed, data feed, XML feed | (XML) soubor obsahující produkty     | A f
 export, project                   | export, projekt                      | An export or a project is created when users upload new data feed in Mergado along with some configuration how it should be processed.
 e-shop                            | e-shop                               | In Mergado, new exports are automatically assigned to an e-shop. Each e-shop may contain several exports.
 import, synchronization           | import, synchronizace                | The process of loading products from a data feed into Mergado's database.
-application (of rules)            | aplikace (pravidel)                  | The process of applying users' changes on products to an export.
-export (of products)              | export (produktů)                    | The process where products are transfered from Mergado's internal database back into an XML feed. 
+application of rules              | aplikace pravidel                    | The process of applying users' changes on products to an export.
+export of products                | export produktů                      | The process where products are transfered from Mergado's internal database back into an XML feed. 
 input feed, input file            | vstupní feed, vstupní soubor         | The feed Mergado downloads and imports into its database.
 output feed, output file          | výstupní feed, výstupní soubor       | The feed which is created when Mergado exports products from its database in a file.
 owner                             | vlastník                             | Owner of an e-shop in Mergado is the user who created an e-shop by importing its first XML feed.
@@ -36,8 +36,8 @@ warning                           | varování                             | Aud
 recommendation                    | doporučení                           | Only recommendations to consider further improovements of the XML feed.
 notification                      | oznámení, upomínka, notifikace       | Mergado uses notifications to inform users about critical errors in their exports, changes in their tariff and so on. Notifications can be sent via an e-mail or may pop up in Mergado.
 application, app                  | aplikace                             | Apps are programs created by external developers which add new features to Mergado in the form of extensions.
-production stage (of app)         | produkční instalace aplikace         | Version (or revision) of an app which is available to all users in Mergado.
-development stage (of app)        | aplikace ve fázi vývoje              | Version (or revision) of an app which is available only to its developers.
+production stage                  | produkční instalace aplikace         | Version (or revision) of an app which is available to all users in Mergado.
+development stage                 | aplikace ve fázi vývoje              | Version (or revision) of an app which is available only to its developers.
 format                            | formát                               | Feeds are usually XML files created according to chosen XML specifications. Feed's specification is called a format. 
 input format                      | vstupní formát                       | The format of the feed imported into Mergado.
 output format                     | výstupní formát                      | The format of the feed exported from Mergado.
@@ -59,7 +59,7 @@ release                           | nasazení                             | Make
 frontend                          | frontend                             | A part of a program or an application closer to the user, that is the user interface and various server-side code like PHP and JavaScript.
 backend                           | backend                              | A part of a program or an application farther away from the user, that is the database and various server-side code like Python.
 process                           | proces                               | An instance of a computer program that is being executed.
-task                              | úkol běžící na pozadí                | A task running in Mergado's background (backend). For example, import or application of rules are tasks which run in the background (so that users can still intearact with the frontend).
+task                              | úkol, který běží v pozadí            | A task running in Mergado's background (backend). For example, import or application of rules are tasks which run in the background (so that users can still intearact with the frontend).
 worker                            | worker                               | A process which executes tasks.
 
 ## Technologies
