@@ -10,15 +10,43 @@ active_item: "changelog"
 
 - Improve application-defined rules API and their management in the Developer Center.
 - Mergado UI CSS framework.
-- New or extended sources of statistics, e.g. Sklik, AdWords, Zbozi.cz, Heureka, Glami.
-- Reviews of apps by users.
-- User-centered improvements of the Mergado Store.
 - Improvements of the vendor profile, e.g. a banner, a logo, a developer's bio.
-- New features on the Store homepage, e.g. filters, a search box, categories and labels, favorite apps, etc.
 
 # Changelog
 
 All notable changes to this project will be documented in this file.
+
+## Mergado Apps 0.3.5
+- 2017-07-12
+
+### Added
+- Eshops in Mergado can be connected with Google Adwords. Google Credentials API endpoint can be used to obtain an _access token_ for connected eshops.
+- Mergado supports a new format [Spartoo](https://www.spartoo.cz/), including a converter from and to the format.
+- Apps can be rated by users. Users can rate apps verbally or by giving it stars.
+- Apps can have labels assigned in the Developers Center. This helps better categorization in Mergado Store.
+- When a developer requests release of their app, it is possible to briefly describe what has changed, this helps our administrators with more precies review of the app and makes the release approval faster.
+
+### Changed
+- The apps bar in Mergado has been slightly improoved. For example, the current active (opened) app is now distinguishable from inactive apps.
+- A new queue has been added for the rebuild of projects where the rebuild was induced by an API call.
+- Apps and thair pricing plan is now bounded to currencies instead of countries.
+
+### Fixed
+- Fixed errors in language detection in Mergado Store.
+
+## Mergado Apps 0.3.4
+- 2017-06-14
+
+### Added
+- New features in the Mergado Store - a search box, filters, sorting and categories.
+- Rating and the block "Other people also use ..." on the app page.
+- A new feed format Shoptet.cz.
+- A new API endpoint - Google credentials collection which returns access tokens and other credentials for authorization with Google APIs.
+- Possibility to mark a product or a set of products as _updated_ so that Mergado processes these products during the next lazy rebuild.
+
+### Fixed
+- API does not allow clients to create elements and variables with invalid names. A 400 HTTP status is returned instead.
+- Description of apps in the Developers Center is always correctly seved.
 
 ## Mergado Apps 0.3.3
 - 2017-05-24
