@@ -18,7 +18,7 @@ All notable changes to this project will be documented in this file.
 ## Mergado Apps 0.3.7
 - 2017-09-14
 
-## Added
+### Added
 - New formats:
   + [Favi](https://favi.cz/),
   + [Everysize](https://www.everysize.com/),
@@ -35,20 +35,20 @@ All notable changes to this project will be documented in this file.
 - The number of possible languages for localization in Mergado Store has been reduced so that it contains only the languages which are supported by Mergado.
 - Mergado collects more data internally. A new graph was added with the number of enabled app's instances in the Developers Center.
 
-## Fixed
+### Fixed
 - The content of the meta element _description_ has been shortened and contains only short description without _markdown_.
 - Detection of user language preference in the Store has been improoved.
 
 ## Mergado Apps 0.3.6
 - 2017-08-10
 
-## Added
+### Added
 
 - **IFrame API:** New method `scrollTo(int px)` has been added to the *Mergado* object, which can be used to control vertical scrolling of the Mergado's parent window.
 - **Appcloud:** Added support for *post-release* scripts which are executed at the end of each app's release. This can be used to perform neccessary database migrations or restart of long-runing tasks. The file `<app_home_dir>/app/mergado_post_release` is executed as the last command during app's release.
 - **Developers:** Markdown supports image description with the `image` tag. Example: `{images=http://img.jpg#Image description,http://img2.jpg#Second description}`. Note that at this moment, it is not possible to use comma (`,`) in the description as it is used as a separator of each image.
 
-## Changed
+### Changed
 
 - The API endpoint **Show Eshop Info* responses with more information about ad systems in field ``info``.
 - Deprecated fields `is_connected_to_<service>` hes been removed from the API endpoint **Show Eshop Info**.
