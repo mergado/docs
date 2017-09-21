@@ -10,11 +10,48 @@ active_item: "changelog"
 
 - Improve application-defined rules API and their management in the Developer Center.
 - Mergado UI CSS framework.
-- Improvements of the vendor profile, e.g. a banner, a logo, a developer's bio.
 
 # Changelog
 
 All notable changes to this project will be documented in this file.
+
+## Mergado Apps 0.3.7
+- 2017-09-14
+
+## Added
+- New formats:
+  + [Favi](https://favi.cz/),
+  + [Everysize](https://www.everysize.com/),
+  + [Shopzilla](http://www.shopzilla.co.uk),
+  + [Price grabber](http://www.pricegrabber.com/) and
+  + [Skrz](https://skrz.cz/).
+- Feed audit is able to process `CSV` files and supports new feed specifications: *Shoptet*, *Spartoo*, *Price Grabber* and *Everysize*.
+- A new page _Releases_ in the Developers Center. The page contains overview of apps' development stages and versions.
+- _App's profile strength score_ in the Developers Center. Profile strength represents how much information has been filled in.
+- A new option in app's preferences - *URL of app's web page*. It is shown in Mergado Store.
+- Users ratings of apps in the Developers Center.
+- Bulk actions when edditing or creating new apps.
+- Each request made by Mergado when processing app's rule contains a new field *apply_log_id*.
+- The number of possible languages for localization in Mergado Store has been reduced so that it contains only the languages which are supported by Mergado.
+- Mergado collects more data internally. A new graph was added with the number of enabled app's instances in the Developers Center.
+
+## Fixed
+- The content of the meta element _description_ has been shortened and contains only short description without _markdown_.
+- Detection of user language preference in the Store has been improoved.
+
+## Mergado Apps 0.3.6
+- 2017-08-10
+
+## Added
+
+- **IFrame API:** New method `scrollTo(int px)` has been added to the *Mergado* object, which can be used to control vertical scrolling of the Mergado's parent window.
+- **Appcloud:** Added support for *post-release* scripts which are executed at the end of each app's release. This can be used to perform neccessary database migrations or restart of long-runing tasks. The file `<app_home_dir>/app/mergado_post_release` is executed as the last command during app's release.
+- **Developers:** Markdown supports image description with the `image` tag. Example: `{images=http://img.jpg#Image description,http://img2.jpg#Second description}`. Note that at this moment, it is not possible to use comma (`,`) in the description as it is used as a separator of each image.
+
+## Changed
+
+- The API endpoint **Show Eshop Info* responses with more information about ad systems in field ``info``.
+- Deprecated fields `is_connected_to_<service>` hes been removed from the API endpoint **Show Eshop Info**.
 
 ## Mergado Apps 0.3.5
 - 2017-07-12

@@ -85,6 +85,7 @@ Each application can define one rule or several rules by exposing a URL. This UR
 {
     "rule_id": "12",
     "project_id": "1",
+    "apply_log_id": "501",
     "data": [
         {
             "id": "123",
