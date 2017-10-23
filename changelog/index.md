@@ -23,7 +23,7 @@ All notable changes to this project will be documented in this file.
 - On the app's detail page developers can view the list of subjects who enabled the app. This can be useful for debugging.
 - The list of apps in the Store can be ordered by the rating of users.
 
-## Změny
+### Změny
 
 - Updated [List Project Queries](http://docs.mergado.apiary.io/#reference/core/queries/list-project-queries) API endpoint: The queries of a project are ordered by the name. However, the query which returns all products is always first.
 - [API endpoint `Show Eshop Info`](http://docs.mergado.apiary.io/reference/core/eshops/show-eshop-info) returns more information about collecton of statistics in the `stats_collection` field.
@@ -33,7 +33,7 @@ All notable changes to this project will be documented in this file.
 - **Store:** Rendering of apps in [Store](https://store.mergado.com) has been optimized and loading is now several times faster.
 - Grayscale icon of apps (in developer stage) also in notifications.
 
-## Opravy
+### Opravy
 
 - Fixed `500 Server Eror` when editing rules via its relevant [API endpoint](http://docs.mergado.apiary.io/reference/core/rules/update-a-rule). The error occured when the client requested modification of queries in the same request.
 - Fixed errors of the kind `"Rule type 'tagstripping' not found."` which occured in several projects when requesting list of rules via API.
