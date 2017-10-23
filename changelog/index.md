@@ -15,6 +15,31 @@ active_item: "changelog"
 
 All notable changes to this project will be documented in this file.
 
+## Mergado Apps 0.3.8
+- 2017-10-20
+
+### Added
+- Mergado supports a new format - Glami for Hungary
+- On the app's detail page developers can view the list of subjects who enabled the app. This can be useful for debugging.
+- The list of apps in the Store can be ordered by the rating of users.
+
+## Změny
+
+- Updated [List Project Queries](http://docs.mergado.apiary.io/#reference/core/queries/list-project-queries) API endpoint: The queries of a project are ordered by the name. However, the query which returns all products is always first.
+- [API endpoint `Show Eshop Info`](http://docs.mergado.apiary.io/reference/core/eshops/show-eshop-info) returns more information about collecton of statistics in the `stats_collection` field.
+- [API endpoint for running tasks](http://docs.mergado.apiary.io/reference/core/tasks/create-a-task) returns HTTP status `423 Locked` (instead of `303 See Other`) for projects which are read only.
+- Reminder about rating of an app is sent only to users who enabled the app.
+- **Developers:** Apps are ordered by name now.
+- **Store:** Rendering of apps in [Store](https://store.mergado.com) has been optimized and loading is now several times faster.
+- Grayscale icon of apps (in developer stage) also in notifications.
+
+## Opravy
+
+- Fixed `500 Server Eror` when editing rules via its relevant [API endpoint](http://docs.mergado.apiary.io/reference/core/rules/update-a-rule). The error occured when the client requested modification of queries in the same request.
+- Fixed errors of the kind `"Rule type 'tagstripping' not found."` which occured in several projects when requesting list of rules via API.
+- **Store:** Default algorithm used for sorting apps in the [Store](https://store.mergado.com) contained a bug.
+- **Store:** _Recommended apps_ on page with the detail of an app sometimes contained profiles of non-released apps. This was fixed.
+
 ## Mergado Apps 0.3.7
 - 2017-09-14
 
