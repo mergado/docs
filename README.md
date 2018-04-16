@@ -10,7 +10,7 @@ First, you need to install Jekyll which can be done via RubyGems. If you don't h
 $ gem install jekyll
 ```
 
-If this fails on *Ubuntu*, you probably need to install `ruby-dev` system package. Do not use jekkyl package from apt, as its very old.
+If this fails on **Ubuntu**, you probably need to install `ruby-dev` system package. Do not use jekkyl package from apt, as its very old.
 
 For more information on how to install Jekyll, see the [official documentation](https://jekyllrb.com/docs/installation/).
 
