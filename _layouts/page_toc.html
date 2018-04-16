@@ -1,24 +1,8 @@
 ---
+use_toc: 1
 layout: base
 ---
-
-<div class="document-style">
-    <div id="content-and-nav">
-        <div id="navigation">Loading...</div>
-
-        <div id="content">
-            {{ content }}
-        </div>
-    </div>
+<div id="toc-content-wrapper">
+    {{ content }}
 </div>
-
-<script src="{{ site.baseurl }}/js/jquery.toc.js"></script>
-<script>
-$(function() {
-    $('#content').toc({
-        showAlways:true,
-        minItemsToShowToc:0,
-        renderIn:'#navigation',
-    });
-});
-</script>
+<script src="{{ site.baseurl }}/js/toc.js"></script>

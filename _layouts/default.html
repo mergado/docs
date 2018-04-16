@@ -2,21 +2,4 @@
 layout: base
 ---
 
-<div class="document-style">
-    <div id="content-and-nav">
-        {% assign post_count = site.posts|size %}
-        {% if site.navigation != 0 and site.navigation == 1 or post_count > 0 %}
-            <div id="navigation">
-                {% include navigation.html %}
-            </div>
-
-            <div id="content">
-                {{ content }}
-            </div>
-        {% else %}
-            <div id="content">
-                {{ content }}
-            </div>
-        {% endif %}
-    </div>
-</div>
+{{ content }}

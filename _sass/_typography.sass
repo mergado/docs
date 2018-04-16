@@ -1,0 +1,306 @@
+html,
+body,
+	text-align: left
+	font-size: 14px
+	font-family: $baseFontFamily
+	font-weight: $normalFontWeight
+	color: $textColor
+
+a
+	&,
+	&:visited,
+	&:active,
+		text-decoration: none
+		color: $primaryColor
+		cursor: pointer
+
+	&:hover,
+	&:focus,
+		color: $primaryColorDark
+		text-decoration: underline
+		outline: none
+
+h1,
+h2,
+h3,
+	font-weight: $normalFontWeight
+
+b,
+strong,
+th,
+h4,
+h5,
+h6,
+th,
+	font-weight: $boldFontWeight
+
+h1
+	font-size: 2rem
+	margin: 40px 0 40px 0
+
+h2
+	margin: 40px 0 15px 0
+	font-size: 1.7rem
+
+	&:first-child
+		margin-top: 0
+
+h3
+	font-size: 1.4rem
+	margin: 20px 0 15px 0
+
+	&:first-child
+		margin-top: 0
+
+h4
+	font-size: 1.2rem
+	margin-top: 15px 0 10px 0
+
+h5
+	font-size: 1.1rem
+
+h6
+	font-size: 1rem
+
+h3
+	margin-top: 20px
+	margin-bottom: 15px
+
+h4
+	margin-top: 15px
+	margin-bottom: 10px
+
+p
+	margin: 10px 0 15px 0
+	line-height: 1.5
+
+	&.info,
+	&.warning,
+		padding: 10px
+		border: $standardBorder
+		border-radius: 4px
+
+	&.info
+		background: $white
+
+	&.warning
+		background: $yellow
+
+a
+	color: $primaryColor
+	text-decoration: none
+
+	&:hover, &:focus, &:active
+		text-decoration: underline
+
+ul,
+ol,
+	padding-left: 30px
+
+	ul
+		list-style-type: square
+		padding-left: 30px
+
+	p
+		margin: 0
+
+	li
+		margin: 5px 0px
+
+code
+	color: inherit
+	display: inline-block
+
+p,
+li,
+	& > code
+		padding: 0px 4px
+		background-color: rgba($darkGrey, 0.15)
+
+pre code
+	border: none
+
+pre,
+code,
+pre code,
+	font-family: $monospaceFontFamily
+	font-size: 10pt
+
+pre
+	font-size: 1em
+	overflow: auto
+	word-wrap: normal
+	white-space: pre
+	margin-top: 10px
+	margin-bottom: 20px
+	padding: 10px
+	border: $standardBorder
+
+.highlight
+	margin: 0
+
+
+
+
+
+.xx
+	h1,
+	h2,
+	h3,
+		font-weight: $normalFontWeight
+
+	b,
+	strong,
+	th,
+	h4,
+	h5,
+	h6,
+	th,
+		font-weight: $boldFontWeight
+
+	h1
+		font-size: 2rem
+
+	h2
+		margin: 40px 0 20px 0
+		font-size: 1.7rem
+
+		&:first-child
+			margin-top: 0
+
+	h3
+		font-size: 1.4rem
+		margin: 20px 0 20px 0
+
+		&:first-child
+			margin-top: 0
+
+	h4
+		font-size: 1.2rem
+		margin-top: 20px 0 10px 0
+
+	h5
+		font-size: 1.1rem
+
+	h6
+		font-size: 1rem
+
+	@media (max-width: $tabletWidth)
+		h1
+			font-size: 1.6rem
+
+		h2
+			font-size: 1.5rem
+
+		h3
+			font-size: 1.3rem
+
+		h4
+			font-size: 1.2rem
+
+		h5
+			font-size: 1.1rem
+
+		h6
+			font-size: 1rem
+
+	h2,
+	h3,
+	h4,
+	h5,
+		margin: 40px 0 20px 0
+
+		&:first-child
+			margin-top: 0
+	h4,
+	h5,
+		margin: 20px 0 10px 0
+
+		&:first-child
+			margin-top: 0
+
+	p
+		margin: 10px 0 20px 0
+		font-size: 1.1rem
+		text-align: justify
+		&.center
+			text-align: center
+
+		&.right
+			text-align: right
+
+	ul,
+	ol,
+	blockquote,
+		margin: 20px 0
+
+	p,
+	li,
+		line-height: 150%
+
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	p,
+	ul,
+	ol,
+	blockquote,
+		&:first-child
+			margin-top: 0px
+
+		&:last-child
+			margin-bottom: 0px
+
+	blockquote
+		background: $lineColor
+		padding: 10px
+
+		& > *:last-child
+			margin-bottom: 0 !important
+
+	img
+		max-width: 100%
+
+	.video-container
+		position: relative
+		width: 100%
+		height: 0
+		margin-top: 20px
+		padding-bottom: 56.25%
+
+	.video
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+
+	.image-list
+		@include resetList()
+		overflow: hidden
+		margin-bottom: 10px
+
+		&:last-child
+			margin-bottom: 0
+
+		a
+			display: block
+
+		li
+			padding: 0
+			float: left
+			border: 1px solid $lineColor
+			padding: 5px
+			margin: 0 5px 5px 0
+
+		img
+			max-width: 120px
+			height: auto
+			opacity: 0.75
+			border: 1px solid $lineColor
+			display: block
+
+			&:hover
+				opacity: 1

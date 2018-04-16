@@ -1,32 +1,68 @@
-<!DOCTYPE html>
-<html>
+<!doctype HTML>
+<html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="viewport" content="width=device-width">
-
-        <title>{{ site.title }}{% if page.title %} : {{ page.title }}{% endif %}</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <meta name="description" content="{{ site.subtitle }}">
-
+        <title>{{ site.title }}{% if page.title %} : {{ page.title }}{% endif %}</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500|Roboto:400,400i,500,500i&amp;subset=latin-ext">
         <link rel="stylesheet" href="{{ site.baseurl }}/css/main.css">
-        <link rel="shortcut icon" type="image/x-icon" href="{{ site.baseurl }}/favicon.ico" />
-
-        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <link rel="shortcut icon" href="{{ site.baseurl }}/favicon.ico" type="image/x-icon" />
     </head>
     <body>
-        <div id="document">
-            {% include header.html %}
-
-            {{ content }}
+        <header id="page-header">
+            <a id="site-logo" href="{{ site.baseurl }}/">
+                <img src="{{ site.baseurl }}/assets/logo_dark.svg" alt="{{ site.title }}" />
+            </a>
+        </header>
+        <div id="page-content-wrapper">
+            <div id="page-content">
+                {{ content }}
+            </div>
         </div>
+        <div id="page-sidebar">
+            <nav id="main-menu">
+                <ul>
 
-        {% include footer.html %}
+                    {% assign post_count = site.posts|size %}
+                    {% for menu_item in site.menu_items %}
+                        <li>
+                            <a
+                                href="{{ site.baseurl }}/{{ menu_item[0] }}"
+                                class="top-level-item {% if menu_item[0] == page.active_item %}active{% endif %}"
+                            >
+                                {{ menu_item[1] }}
+                            </a>
 
-        <script src="{{ site.baseurl }}/js/navigation.js"></script>
-
+                            {% if menu_item[0] == page.active_item %}
+                                {% if site.navigation != 0 and site.navigation == 1 or post_count > 0  %}
+                                    {% if page.use_toc == 1 %}
+                                        <div id="toc-menu-wrapper" class="menu-child-items">
+                                            Loading...
+                                        </div>
+                                    {% else %}
+                                        <div class="menu-child-items">
+                                            {% include navigation.html %}
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+            <footer id="page-footer">
+                <ul class="footer-links">
+                    <li><a href="{{ site.mergadourl }}">Mergado</a></li>
+                    <li><a href="{{ site.auditurl }}">Audit</a></li>
+                    <li><a href="{{ site.mergadourl }}/developers/">Developers</a></li>
+                    <li><a href="{{ site.codeurl }}">Docs</a></li>
+                </ul>
+            </footer>
+        </div>
         {% if site.google_analytics_id != "" %}
-        {% include google_analytics.html %}
+            {% include google_analytics.html %}
         {% endif %}
-
     </body>
 </html>

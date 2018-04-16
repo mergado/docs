@@ -1,38 +1,82 @@
-// Proportions
-$page-width: 1020px
-$content-width: 740px
-$navigation-width: 245px
+// Colors
+$darkGrey: #383632
+$grey: #696866
+$mediumGrey: #9a9998
+$lightGrey: #cdcccb
+$extraLightGrey: #f3f2f1
+$white: #fff
+
+$lightCyan: #e1f6f6
+$cyan: #009ba9
+$darkCyan: #0e7b89
+
+$darkBrown: #ccc7c2
+$mediumBrown: #f1eee7
+$lightBrown: #fcfaf9
+
+$lightRed: #ffe7e7
+$red: #ea4e4b
+$darkRed: #bb3e3c
+
+$lightYellow: #fff9e3
+$yellow: #ffec88
+
+$orange: #ff9500
+$darkOrange: #da8814
+
+$lightGreen: #e8f6e2
+$mergadoGreen: #69a120
+$mergadoGreenDark: #51850d
+
+$textColor: $darkGrey
+$drabColor: $mediumGrey
+$primaryColor: $cyan
+$primaryColorDark: $darkCyan
+$highlightColor: $lightCyan
+
+$backgroundColor: $lightBrown
+$pageBackgroundColor: $mediumBrown
+$pageHeaderGrey: #565452
+$lineColor: $darkBrown
+
+$dangerColor: $red
+$dangerColorDark: $darkRed
+
+$negativeColor: $red
+$negativeColorDark: $darkRed
+$negativeBackground: $lightRed
+
+$warningColor: $orange
+$warningColorDark: $darkOrange
+
+$positiveColor: $mergadoGreen
+$positiveColorDark: $mergadoGreenDark
+$positiveBackground: $lightGreen
+
+$hoverBackground: $lightYellow
+
 
 // Fonts
-$base-font-size: 11pt
-$base-font-weight: 400
-$base-line-height: 1.5
-$base-font-family: Arial, Helvetica, Verdana, sans-serif
-$monospace-font-family: "Consolas", "DejaVu Sans Mono", "Lucida Sans Typewriter", monospace
+$baseFontFamily: Roboto, Sans-serif
+$monospaceFontFamily: 'Roboto Mono', monospace
+$normalFontWeight: 400
+$boldFontWeight: 500
 
-// Basic Colors
-$black: #333
-$white: #fff
-$white-alpha-color: rgba(255, 255, 255, 0.5)
-$black-alpha-color: rgba(0, 0, 0, 0.1)
-$gray-alpha-color: rgba(219, 203, 163, 0.5)
 
-// Colors
-$text-color: $black
-$light-color: #888
-$link-color: #009ba9
-$link-dark-color: #006770
-$special-color: #dc8600
-$important-color: #d00
-$positive-color: #85bd3c
-$negative-color: #d00
-$negative-bg-color: #fba5a5
-$warning-color: #ff9900
-$bg-color: #f5ecd5
-$content-bg-color: $white
-$content-line-color: #dbcba3
-$logo-color: $white
-$variable-color: #f3c628
-$submenu-background-color: #c59721
-$table-border-color: $gray-alpha-color
-$table-background-color: $white
+// Effects
+$standardBoxShadow: 0px 2px 6px rgba(0, 0, 0, 0.25)
+$standardBorder: 1px solid $lineColor
+
+$fastTransition: .2s
+$normalTransition: .4s
+$debugTransition: 2s
+$layoutTransition: $fastTransition
+
+
+// Size system
+$elementSize: 44px
+$elementLineHeight: $elementSize - 22px // 2px border + 2 x 10px padding
+
+$mobileWidth: 480px
+$tabletWidth: 960px
+$laptopWidth: 1440px
