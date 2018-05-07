@@ -1,29 +1,30 @@
-table
-	width: 100%
-	margin-top: 20px
-	margin-bottom: 30px
-	border-collapse: collapse
+.text-content
+	table:not([class])
+		width: 100%
+		margin-top: 20px
+		margin-bottom: 30px
+		border-collapse: collapse
 
-	thead
-		tr
-			background-color: $backgroundColor
+		thead
+			tr
+				background-color: $backgroundColor
 
-		th
-			padding: 10px
-			border-bottom-width: 2px
-			font-weight: $normalFontWeight
+			th
+				padding: 10px
+				border-bottom-width: 2px
+				font-weight: $normalFontWeight
 
-	tbody
-		tr
-			background-color: $white
-			border-top: none
+		tbody
+			tr
+				background-color: $white
+				border-top: none
 
-		td
+			td
 
-			&:not(:first-child)
-				border-left-style: dotted
+				&:not(:first-child)
+					border-left-style: dotted
 
-	td,
-	th,
-		border: $standardBorder
-		padding: 5px 10px
+		td,
+		th,
+			border: $standardBorder
+			padding: 5px 10px

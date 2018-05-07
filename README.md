@@ -28,8 +28,6 @@ Usually, you only need to run the following command which generates HTML files i
 $ jekyll serve
 ```
 
-Add `--watch` param if you want to make more incremental changes.
-
 This command also runs a built-in development server (at http://localhost:4000/ by default). For more information follow the [official documentation](https://jekyllrb.com/docs/usage/).
 
 If you want to create a new section to appear in the navigation, edit the `_config.yml` in root and run the command for creating a new page, for example:

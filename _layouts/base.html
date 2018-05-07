@@ -17,14 +17,13 @@
             </a>
         </header>
         <div id="page-content-wrapper">
-            <div id="page-content">
+            <div id="page-content" class="text-content">
                 {{ content }}
             </div>
         </div>
         <div id="page-sidebar">
             <nav id="main-menu">
                 <ul>
-
                     {% assign post_count = site.posts|size %}
                     {% for menu_item in site.menu_items %}
                         <li>
@@ -37,7 +36,7 @@
 
                             {% if menu_item[0] == page.active_item %}
                                 {% if site.navigation != 0 and site.navigation == 1 or post_count > 0  %}
-                                    {% if page.use_toc == 1 %}
+                                    {% if page.layout == 'page_toc' %}
                                         <div id="toc-menu-wrapper" class="menu-child-items">
                                             Loading...
                                         </div>
@@ -64,5 +63,6 @@
         {% if site.google_analytics_id != "" %}
             {% include google_analytics.html %}
         {% endif %}
+        <script src="{{ site.baseurl }}/js/muil.min.js"></script>
     </body>
 </html>

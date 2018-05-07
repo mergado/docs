@@ -1,6 +1,5 @@
 .highlight
-	margin-top: 5px
-	margin-bottom: 9px
+	margin: 5px 0 10px 0
 
 	.hll
 		background-color: #ffffcc
@@ -226,3 +225,35 @@
 	// Literal.Number.Integer.Long
 	.il
 		color: #990000
+
+
+code
+	color: inherit
+	display: inline-block
+
+p,
+li,
+	& > code
+		margin: 2px 0
+		padding: 0px 4px
+		background-color: rgba($darkGrey, 0.1)
+		border-radius: 4px
+
+pre code
+	border: none
+
+pre,
+code,
+pre code,
+	font-family: $monospaceFontFamily
+	font-size: 10pt
+
+pre
+	margin: 10px 20px 0
+	padding: 10px
+	border: $standardBorder
+	border-radius: 4px
+	overflow: auto
+	word-wrap: normal
+	white-space: pre
+	font-size: 1em

@@ -51,5 +51,5 @@ Method | Parameters | Description
 `Mergado.scrollTo(int topInPixels)` | `topInPixels`: Vertical scroll value, relative to app's `IFRAME` viewport. Must be set in pixels. | The browser's absolute vertical scroll will be calculated automatically. Just set this Y value relative to your page.
 `Mergado.tellHeight(``[int heightInPixels])` | `heightInPixels` (optional): Can be set in pixels, `0` or `undefined` | <b>DEPRECATED</b><br><br>The *wrapper page* will set height of app's viewport `IFRAME` to this number of pixels. If no height is passed, it will be determined automatically.<br><br>For newly created apps since Mergado redesign in Spring 2018 this is no longer necessary, as the app's iframe spans almost entire browser viewport and uses its own scrolling.
 
-{: .warning}
+{: .message}
 **Warning:** Do not manually *copy & paste* contents of `MessageAPI.js` file into your page's source code. Always include the remote `MessageAPI.js` script file provided by Mergado platform at `https://app.mergado.com/static/js/apps/MessageApi.js` or `https://app.mergado.com/static/js/apps/MessageApi.min.js`. This way you can be sure you use the most up-to-date version of MAIA.

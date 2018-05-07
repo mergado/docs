@@ -25,7 +25,7 @@ To obtain an access token using the `authorization_code` grant type, the followi
     + `grant_type` -- `authorization_code`.
     + `response_type` -- `code`, this tells the authorization server that we want to return an authorization code which will be exchanged with an access token.
     + `entity_id` -- ID of the entity the client wants access to. `entity_id` **must** be provided if your app is of `project` or `shop` type. `entity_id` **must not** be provided if your app is of the `user` type. In that case `entity_id` will be the same as ID of the end-user that is currently logged in.
-   
+
    **Example:**
 
    ```
@@ -59,7 +59,7 @@ To obtain an access token using the `authorization_code` grant type, the followi
 
 An access token is obtained using the `refresh_token` grant type. When an application needs to access protected resource (e.g. to hide/unhide some products) but the end-user cannot interact with Mergado in a web browser, we say that it works in the offline mode.
 
-{: .warning}
+{: .message}
 **Warning!** Never use this mode in cases where the end-user is interacting with your application via a web browser. The mode is called _offline_ for good reason and if used incorrectly, it can create a security threat, potentially allowing an attacker to exploit a vulnerability in your application.
 
 In offline mode, the access token is obtained by the following steps:

@@ -1,0 +1,81 @@
+.style-guide-buttons
+	.tiles
+		margin-bottom: 20px
+
+	.button
+		float: left
+		clear: both
+		margin: 5px 0
+
+.style-guide-colors
+	.color-spec
+		@include flex(flex-end, flex-start, row-reverse)
+		padding: 20px 0
+
+		.variable
+			padding: 2px 4px
+			border-radius: 4px
+			border: $standardBorder
+			background: $backgroundColor
+
+		.color-circle
+			margin: 0 40px 0 0
+			width: 150px
+			height: 150px
+			border-radius: 50%
+			color: $white
+			@include flex(center, center, column)
+			box-shadow: $standardBoxShadow
+
+			.color-hex
+				font-size: 2rem
+
+			&.dark-text
+				color: $textColor
+
+				code
+					background: rgba($darkGrey, 0.05)
+
+
+.style-guide-icons
+	.icons-block
+		@include flex(flex-start, flex-start, row, wrap)
+
+	.icon-with-label
+		@include flex(flex-start, center)
+		padding: 10px
+		width: 25%
+
+	.icon-wrapper
+		@include flexCenter()
+		width: 40px
+		height: 40px
+
+		img
+			max-width: 100%
+			max-height: 100%
+
+	.icon-label
+		padding: 0 20px
+
+
+.invert
+	background: $darkGrey
+	color: $white
+
+
+.style-guide-tiles
+	.tile
+		background: rgba(#888, 0.25)
+
+	.tile-content
+		padding: 5px
+		text-align: center
+		border: 1px solid #888
+		font-size: 1.2rem
+		font-weight: $boldFontWeight
+
+		.css-class
+			font-size: 1rem
+			font-style: italic
+			font-weight: $normalFontWeight

@@ -38,6 +38,7 @@ sections: [
     ['developers', 'Developers'],
     ['apps', 'Developing Apps'],
     ['api', 'API Reference'],
+    ['design', 'UI Library'],
 ]
 
 # Keep as an empty string if served up at the root. If served up at a specific

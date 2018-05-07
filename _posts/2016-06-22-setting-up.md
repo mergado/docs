@@ -22,7 +22,7 @@ Before you register a new app, you need to figure out a name, a type of the app 
 * `oauth2 scopes` -- list of oauth2 scopes which the app is authorized to use
 * `countries` -- countries to make the app available in
 
-{: .warning}
+{: .message}
 You won't be able to change the `name` and `type` after the registration of the app. However, other information like `color` or `trial period` can be changed anytime, so you don't need to worry about that at this point and can decide later in the development process.
 
 ## DB, SSH and OAuth2 credentials
