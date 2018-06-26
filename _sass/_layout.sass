@@ -90,3 +90,21 @@ $sidebarSize: 240px
 			&.active,
 				font-weight: $boldFontWeight
 				color: $white
+
+.message.info
+	background: $highlightColor
+	border-color: $primaryColorDark
+
+// Override ugly MUIL justification
+.text-block p, .text-content p
+	text-align: start !important
+
+p
+	&:last-child
+		margin-bottom: 0
+	&:first-child
+		margin-top: 0
+
+img.blue-image
+	border: 1px solid #0e7b89
+	border-radius: 4px

@@ -7,11 +7,11 @@ active_item: ""
 order: 1
 ---
 
-Mergado Apps is a way to implement new functionality that can be used by users or agencies of Mergado. This functionality is created and maintained by third-party developers or companies, i.e. Mergado team does not take responsibility for broken applications.
+Even though Mergado was originally developed as a closed system, throughout the years it became apparent that a possibility of extending our core features with external, third-party logic *(which we might've never thought of)*, could be quite a useful thing to do. Hence, our Mergado platform gives you - as a third party - a way of adding new functionality to Mergado, which can be used by its users.
 
 ## Before you start
 
-If you have never used Mergado, you may be a bit confused. We recommend you to read about Margado on [the blog](http://www.mergado.com/blog) and even try to use Mergado for a while if possible (just try to create an export, rules and so on). Please, don't hesitate to [contact us](/docs/support/), we can help you with setting up some test data and also provide some useful tips.
+If you have never used Mergado, you may be a bit confused. We recommend you to read about Margado on [the blog](http://www.mergado.com/blog) and even try to use Mergado for a while if possible *(just try to create an export, add a few rules to it, etc.)*. Please, don't hesitate to [contact us](/docs/support/), if you need help. We can help you with setting up some test data and also provide some useful tips.
 
 ## Terminology
 
