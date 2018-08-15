@@ -15,7 +15,7 @@ If you are familiar with the OAuth protocol, you already know that with every ac
 * **Online mode**, which is similar to the `authorization_code` grant in OAuth 2.0.
 * **Offline mode**, which is similar to the `refresh_token` grant type.
 
-## Online mode
+### Online mode
 
 An access token is obtained using the `authorization_code` grant defined in the OAuth 2.0 authorization framework. This mode is used when the end-user (aka the resource owner) is capable of receiving incoming requests (typically via redirection in a web browser). If the end-user is not interacting with a web browser (i.e. is not currently working in Mergado) but an application needs to access a protected resource, the `refresh_token` grant described in the _Offline Mode_ section must be used.
 
@@ -57,7 +57,7 @@ To obtain an access token using the `authorization_code` grant type, the followi
    }
    ```
 
-## Offline mode
+### Offline mode
 
 An access token is obtained using the `refresh_token` grant type. When an application needs to access protected resource (e.g. to hide/unhide some products) but the end-user cannot interact with Mergado in a web browser, we say that it works in the offline mode.
 
@@ -85,7 +85,7 @@ In offline mode, the access token is obtained by the following steps:
 {: .info}
 **Important!** Access tokens obtained in the offline mode have somewhat different permissions than tokens obtained in the online mode. Permissions in the offline mode depend on the type of application (or the entity type). For example, if an application is created for eshops (entity type is `shop`) in the offline mode, it won't be able to access information of any user since the access token is created on behalf of an eshop. In the online mode, a protected resource is always accessed on behalf of an end-user - this means that with the appropriate scope, an application can access this user's information.
 
-## Implicit
+### Implicit
 
 The implicit grant type is used to obtain access tokens (it does not support the issuance of refresh tokens) and is optimized for public clients known to operate a particular redirection URI. These clients are typically implemented in a browser using a scripting language such as JavaScript.
 
