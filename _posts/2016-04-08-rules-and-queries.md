@@ -86,6 +86,7 @@ Each application can define one rule or several rules by exposing a URL. This UR
     "rule_id": "12",
     "project_id": "1",
     "apply_log_id": "501",
+    "request_id": "1BAC92",
     "data": [
         {
             "id": "123",
@@ -119,12 +120,21 @@ Each application can define one rule or several rules by exposing a URL. This UR
 }
 ```
 
+Explanation of the fields:
+
+* `project_id` - ID of the project. Changes in products by rules are applied to this project.
+* `rule_id` - ID of the rule in Mergado, each rule is represented by one row in the UI.
+* `apply_log_id` - ID of this rule application's log.
+* `request_id` - ID of this request.
+
 The request is considered to be a success if the server replies with a `200 OK` HTTP status code and the body of the response contains products' data in the same format. The application is not required to return all products, it is required to return only the products and elements that were processed and should be changed in some way. For example, the server's response might be:
 
 ```json
 {
     "rule_id": "12",
     "project_id": "1",
+    "apply_log_id": "501",
+    "request_id": "1BAC92",
     "data": [
         {
             "id": "234",
@@ -140,6 +150,12 @@ This minimalistic version is highly recommended as it is more efficient for both
 
 {: .info}
 **Note:** If you want to hide a product's element value, return its value set to an empty string `""` or to a `null`, both values are treated the same in Mergado.
+
+#### Retrying on Errors
+
+Whenever your app returns 4xx or 5xx HTTP status code, the application of rules fails and the whole project's rebuild is interrupted. Users than see this error in the UI.
+
+Our server attempts retrying when the app returns a 502, 503, 504 or 429 status code on an app's rule application. The retry can be affected when the app responses with a `429` status code with a `Retry-After` header. For more information on this header, see [Mozilla docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After).
 
 ### Instantiating app-defined rules
 
