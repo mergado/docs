@@ -155,7 +155,7 @@ This minimalistic version is highly recommended as it is more efficient for both
 
 Whenever your app returns 4xx or 5xx HTTP status code, the application of rules fails and the whole project's rebuild is interrupted. Users than see this error in the UI.
 
-Our server attempts retrying when the app returns a 502, 503, 504 or 429 status code on an app's rule application. The retry can be affected when the app responses with a `429` status code with a `Retry-After` header. For more information on this header, see [Mozilla docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After).
+Our server attempts retrying (5 times at most) when the app returns a 502, 503, 504 or 429 status code on an app's rule application. The retry can be affected when the app responses with a `429` status code with a `Retry-After` header. For more information on this header, see [Mozilla docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After).
 
 ### Instantiating app-defined rules
 
