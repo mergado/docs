@@ -330,7 +330,7 @@ You can ofcourse use any other "nice" select box component/plugin there is, or j
 
 ## File upload
 
-There is some JavaScript code as part of MUIL, that makes this input stylable & behave correctly.
+There is some JavaScript code as part of MUIL, that makes this input stylable & behave correctly. It works automaticaly, so just file input in there and thats it.
 
 <div class="vertical-form">
 	<div class="input-group">
@@ -345,18 +345,10 @@ There is some JavaScript code as part of MUIL, that makes this input stylable & 
 ```html
 <div class="input-group">
 	<label for="file-upload">Store's avatar:</label>
-	<div class="file-upload-control">
-		<div class="control-wrapper">
-			<div class="button">
-				Select file
-				<input id="file-upload" type="file" class="upload-input" />
-			</div>
-			<div class="filename">No file selected</div>
-		</div>
-		<p class="input-note">
-			Optional information about supported file format or some other general input note.
-		</p>
-	</div>
+	<input id="file-upload" type="file" />
+	<p class="input-note">
+		Optional information about supported file format or some other general input note.
+	</p>
 </div>
 ```
 
