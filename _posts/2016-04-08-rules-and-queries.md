@@ -9,7 +9,7 @@ order: 1
 
 Rules are probably the most useful feature in Mergado. With queries, it provides a tool for fast and easy modification of products' data.
 
-## Queries
+# Queries
 
 Queries are used to filter products by values of their elements. For this purpose, we implemented our own language abbreviated as MQL (Mergado Query Language). MQL helps to describe how to filter a set of products, similarly as SELECT statements in SQL. And in fact, all MQLs are always translated into SQL. For example, a query returning all products with price lower than 100 EUR looks like this in MQL:
 
@@ -26,7 +26,7 @@ In the above query, `PRICE_VAT` is the name of an element in a project (which is
 
 Names of elements can be escaped using square brackets, i.e. `[` and `]`. For example, the element `PARAM|color` can be used in MQL like this: `[PARAM|color] = 'red'`.
 
-## Rules
+# Rules
 
 All manipulation of products' data happens in rules. Rules transform _input_ data (provided mostly by administrators in eshops or by marketing agencies) to _output_ data (usually consumed by services like Heureka.cz, Google Merchant and Zboží.cz). The simplest rule is called `rewriting` which does nothing else than that it fills the output value of a product's element with a value. For instance, imagine you have a product like ThinkPad T440 and you want to lower its price. The rule `rewriting` is one way to do it and this is the action it performs:
 
@@ -48,7 +48,7 @@ You usually don't want to lower prices of all products in your feed and that is 
 
 ### Instantiation and definition
 
-When we say _instantiate_ a rule, what we mean is that someone creates a rule that performs bulk modification of products in an XML feed. This modification is done in a way that the user intents by an instantiation, for example, a rule's instance might lower prices of all products by 100 EUR. Such rule is probably not very useful but it shows what rule instances do: modify a project's (export's) products.
+When we say _instantiate_ a rule, what we mean is that someone creates a rule that performs bulk modification of products in a feed. This modification is done in a way that the user intents by an instantiation, for example, a rule's instance might lower prices of all products by 100 EUR. Such rule is probably not very useful but it shows what rule instances do: modify a project's (export's) products.
 
 Another term we use is rule _definition_. Rule definitions are actually like classes in object-oriented programming, while rule instances are like objects. A rule definition represents what a particular rule does and what parameters it requires in order to be instantiated.
 
@@ -75,11 +75,46 @@ As we mentioned previously, this rule rewrites the current value with a new one 
 
 In the case of the `rewriting` rule, a user or an app provides the `new_content` field -- the value with which the output value of each selected product is replaced.
 
-### Creating new rules by application
+## Application rules
 
-Mergado provides a list of predefined rules, which can be used to manipulate products' data. This is useful if you want to create a set of rules according to the eshops feed, the current day, the weather etc. In many cases it is very useful to define your own rule which can be instantiated by the user or even by another app.
+Mergado provides a list of predefined rules, which can be used to manipulate products' data. This is useful if you want to create a set of rules according to the eshops feed, the current day, the weather etc. In many cases it is very useful to define your own rule which can be instantiated by app.
 
-Each application can define one rule or several rules by exposing a URL. This URL can be set in the Developers center and will be periodically called by Mergado's backend with product's data on each rule application. The backend sends the data in the following format by a HTTP POST request:
+### Creating application rule
+
+Each application can define rules by exposing a URL. First you need to create such rule in the [Mergado Developers](https://app.mergado.com/developres/) center. In your App select `Rules` in left menu. You must provide:
+
+Parameter | Description
+------ | -----------
+`Title`| Description of your rule.
+`ID` | ID you specify here will be converted into `app_rule_type` you use in API to instantiate new rule. It will be in format `apps.<your-app-name>.<ID>`. <br><br>Note: Stages (`dev` and `production`) have different type. 
+`URL` | URLs for your rules. Stages (`dev` and `prodution`) can have different URLs.
+
+### Instantiating new rule via Mergado API
+
+Send `HTTP POST` request on `https://api.mergado.com/projects/<project-id>/rules/` URL.
+
+with body:
+
+```json
+{
+	"name": "Rule name",
+	"type": "app",
+	"data": {
+		"app_rule_type": "apps.appname.dev.processing",
+	},
+	"...Some data skipped, see Mergado API doc for more info...",
+}
+```
+
+Explanation of the fields:
+
+* `name` - Rule name as it will apear in Mergado UI for users
+* `type` - This is type of the rule
+* `data.app_rule_type` - This is `app_rule_type` you can find in Mergado Developers center
+
+### Processing of application rule
+
+The backend sends the data on URL you specified in Mergado Developers center in the following format by a `HTTP POST` request:
 
 ```json
 {
@@ -158,23 +193,3 @@ This minimalistic version is highly recommended as it is more efficient for both
 Whenever your app returns 4xx or 5xx HTTP status code, the application of rules fails and the whole project's rebuild is interrupted. Users than see this error in the UI.
 
 Our server attempts retrying (5 times at most) when the app returns a 502, 503, 504 or 429 status code on an app's rule application. The retry can be affected when the app responses with a `429` status code with a `Retry-After` header. For more information on this header, see [Mozilla docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After).
-
-### Instantiating app-defined rules
-
-Defining new rules makes it possible for end-users to create (or instantiate) new application-defined rules (if the application enables this). Now you might be wondering why shouldn't it be possible to instantiate application-defined rules in the Mergado REST API. This is of course possible, although it may seem a bit tricky at first. All application-defined rules have the same definition, which looks like this:
-
-```json
-{
-    "fields": [
-        {
-            "required": true,
-            "type": "STRING",
-            "name": "app_rule_type"
-        }
-    ],
-    "type": "app",
-    "relationship": "1:1"
-}
-```
-
-Each app can define several rules (with unique names), the definition above says that before an app instantiate a new rule in a project, it is required to provide an `app_rule_type`. This fields is a unique ID of the application-defined rule generated in the developers center from the name of the app and the name of the rule.

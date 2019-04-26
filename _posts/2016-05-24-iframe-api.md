@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "IFRAME API"
+title: "IFRAME API (MAIA)"
 category: apps
 date: 2016-05-24 14:39:00
 active_item: ""
@@ -43,13 +43,118 @@ After the script is executed, a new global `Mergado` variable containing a singl
 ### What you can do with it
 
 The `Mergado` object has a number of methods which can be used to better your application, improve its usability or overcome any limitations that are the result of strict handling of sandboxed `IFRAME`s by web browsers.
-
-Method | Parameters | Description
------- | ---------- | -----------
-`Mergado.startDownload(``string url)` | `url`: Target URL to start download from | A new mini window will be popped up having *target URL* as its location. The window will be closed after 10 seconds; until then the target server has time to make a proper response. In this case most probably in a form of a file download.
-`Mergado.openWindow(``string url)` | `url`: Target page URL | A new browser window will be opened having the *target URL* as its location. This window will NOT automatically close itself.
-`Mergado.scrollTo(int topInPixels)` | `topInPixels`: Vertical scroll value, relative to app's `IFRAME` viewport. Must be set in pixels. | The browser's absolute vertical scroll will be calculated automatically. Just set this Y value relative to your page.
-`Mergado.tellHeight(``[int heightInPixels])` | `heightInPixels` (optional): Can be set in pixels, `0` or `undefined` | <b>DEPRECATED</b><br><br>The *wrapper page* will set height of app's viewport `IFRAME` to this number of pixels. If no height is passed, it will be determined automatically.<br><br>For newly created apps since Mergado redesign in Spring 2018 this is no longer necessary, as the app's iframe spans almost entire browser viewport and uses its own scrolling.
+<table>
+	<thead>
+	<tr>
+		<th>Method</th>
+		<th>Parameters</th>
+		<th>Description</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td rowspan="3">
+			<pre class="highlight"><code>Mergado.startDownload(string url)</code></pre>
+		</td>
+		<td rowspan="3"><code class="highlighter-rouge">url</code>: Target URL to start download from</td>
+		<td>A new mini window will be popped up having <em>target URL</em> as its location. The window will be closed
+			after 10 seconds; until then the target server has time to make a proper response. In this case most
+			probably in a form of a file download.
+		</td>
+	</tr>
+	<tr>
+		<th>Example</th>
+	</tr>
+	<tr>
+		<td>
+			<pre class="highlight"><code>Mergado.tellHeight([int heightInPixels])</code></pre>
+		</td>
+	</tr>
+	<tr>
+		<td rowspan="2">
+			<pre class="highlight"><code>Mergado.openWindow(string url)</code></pre>
+		</td>
+		<td rowspan="2"><code class="highlighter-rouge">url</code>: Target page URL</td>
+		<td>A new browser window will be opened having the <em>target URL</em> as its location. This window will NOT
+			automatically close itself.
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<b>Example:</b>
+			<pre class="highlight"><code>Mergado.openWindow('https://app.mergado.com/')</code></pre>
+		</td>
+	</tr>
+	<tr>
+		<td rowspan="2">
+			<pre class="highlight"><code>Mergado.scrollTo(int topInPixels)</code></pre>
+		</td>
+		<td rowspan="2"><code class="highlighter-rouge">topInPixels</code>: Vertical scroll value, relative to app’s
+			<code class="highlighter-rouge">IFRAME</code> viewport. Must be set in pixels.
+		</td>
+		<td>The browser’s absolute vertical scroll will be calculated automatically. Just set this Y value relative to
+			your page.
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<b>Example:</b>
+			<pre class="highlight"><code>Mergado.scrollTo(115)</code></pre>
+		</td>
+	</tr>
+	<tr>
+		<td rowspan="2">
+			<pre class="highlight"><code>Mergado.setAppRoute(string fullAppRoute)</code></pre>
+		</td>
+		<td rowspan="2"><code class="highlighter-rouge">fullAppRoute</code>: Complete app route e.g.
+			<code class="highlighter-rouge">eshop/1/project/2/help/</code></td>
+		<td>The <code class="highlighter-rouge">fullAppRoute</code> parameter is than via JS method
+			<code class="highlighter-rouge">history.replaceState()</code> apended into mergado URL as
+			<code class="highlighter-rouge">route</code> query string. And if this URL is then invoked, this part is
+			appended after app URL in IFRAME src attribute.
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<b>Example:</b><br>
+			<ol>
+				<li>
+					App calls
+					<pre class="highlight"><code>setAppRoute('eshop/1/project/2/help/')</code></pre>
+				</li>
+				<li>
+					In Mergado URL is appended
+					<pre class="highlight"><code>...&amp;route=eshop%2F1%2Fproject%2F2%2Fhelp%2F</code></pre>
+				</li>
+				<li>
+					If this page is loaded then IFRAME src attribute is created from
+					<pre class="highlight"><code>appcloud.mergado.com/apps/appname/</code></pre>
+					and query string <code class="highlighter-rouge">route</code> parameter
+					<pre class="highlight"><code>eshop/1/project/2/help/</code></pre>
+				</li>
+			</ol>
+		</td>
+	</tr>
+	<tr>
+		<td rowspan="2">
+			<pre class="highlight"><code>Mergado.tellHeight([int heightInPixels])</code></pre>
+		</td>
+		<td rowspan="2"><code class="highlighter-rouge">heightInPixels</code> (optional): Can be set in pixels,
+			<code class="highlighter-rouge">0</code> or <code class="highlighter-rouge">undefined</code></td>
+		<td><b>DEPRECATED</b><br><br>The <em>wrapper page</em> will set height of app’s viewport
+			<code class="highlighter-rouge">IFRAME</code> to this number of pixels. If no height is passed, it will be
+			determined automatically.<br><br>For newly created apps since Mergado redesign in Spring 2018 this is no
+			longer necessary, as the app’s iframe spans almost entire browser viewport and uses its own scrolling.
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<b>Example:</b>
+			<pre class="highlight"><code>Mergado.tellHeight(260)</code></pre>
+		</td>
+	</tr>
+	</tbody>
+</table>
 
 {: .message}
 **Warning:** Do not manually *copy & paste* contents of `MessageAPI.js` file into your page's source code. Always include the remote `MessageAPI.js` script file provided by Mergado platform at `https://app.mergado.com/static/js/apps/MessageApi.js` or `https://app.mergado.com/static/js/apps/MessageApi.min.js`. This way you can be sure you use the most up-to-date version of MAIA.
