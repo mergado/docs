@@ -122,6 +122,7 @@ The backend sends the data on URL you specified in Mergado Developers center in 
     "project_id": "1",
     "apply_log_id": "501",
     "request_id": "1BAC92",
+    "current_format": "heureka.cz",
     "data": [
         {
             "id": "123",
@@ -135,6 +136,9 @@ The backend sends the data on URL you specified in Mergado Developers center in 
                 "EAN": "0848719006099",
                 "PRICE": "2525.10",
                 "IMGURL": "https://app.mergado.com/img/890.jpg"
+            },
+            "metadata": {
+                "..."
             }
         },
         {
@@ -149,6 +153,9 @@ The backend sends the data on URL you specified in Mergado Developers center in 
                 "EAN": "0010313601581",
                 "PRICE": "185.10",
                 "IMGURL": "https://app.mergado.com/img/530.jpg"
+            },
+            "metadata": {
+                "..."
             }
         }
     ]
@@ -161,12 +168,14 @@ Explanation of the fields:
 * `rule_id` - ID of the rule in Mergado, each rule is represented by one row in the UI.
 * `apply_log_id` - ID of the rule application's log.
 * `request_id` - ID of the request different for each request. Note that the ID doesn't change when the request is retried (see Retrying on Errors bellow).
+* `current_format` - Name of the format in which the products are represented when this rule is applied.
 * `data` - A list of products.
     + `id` - ID of the product.
     + `created_at` - When the product has been imported in Mergado.
     + `updated_at` - The last time the product changed.
     + `output_changed_at` - The last time the product changed its output values.
     + `data` - A key-value paires containing elements, their names and values. These values are altered by rules with higher priority (applied sooner in the chain of rules).
+    + `metadata` - Cached data for the whole application procces that you send before in response for this particular product in another rule.
 
 The request is considered to be a success if the server replies with a `200 OK` HTTP status code and the body of the response contains products' data in the same format. The application is not required to return all products, it is required to return only the products and elements that were processed and should be changed in some way. For example, the server's response might be:
 
@@ -177,6 +186,9 @@ The request is considered to be a success if the server replies with a `200 OK` 
             "id": "234",
             "data": {
                 "DELIVERY_DATE": "0"
+            },
+            "metadata": {
+                "..."
             }
         }
     ]
@@ -188,8 +200,10 @@ This minimalistic version is highly recommended as it is more efficient for both
 {: .info}
 **Note:** If you want to hide a product's element value, return its value set to an empty string `""` or to a `null`, both values are treated the same in Mergado.
 
-#### Retrying on Errors
+#### Retrying on Errors and Delaying Requests
 
 Whenever your app returns 4xx or 5xx HTTP status code, the application of rules fails and the whole project's rebuild is interrupted. Users than see this error in the UI.
 
 Our server attempts retrying (5 times at most) when the app returns a 502, 503, 504 or 429 status code on an app's rule application. The retry can be affected when the app responses with a `429` status code with a `Retry-After` header. For more information on this header, see [Mozilla docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After).
+
+To delay another request (to prevent application overload) pass `Mergado-Please-Slow-Down: true` header. The delay will increase with every such response.
