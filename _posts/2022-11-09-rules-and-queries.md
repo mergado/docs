@@ -79,6 +79,8 @@ In the case of the `rewriting` rule, a user or an app provides the `new_content`
 
 Mergado provides a list of predefined rules, which can be used to manipulate products' data. This is useful if you want to create a set of rules according to the eshops feed, the current day, the weather, etc. In many cases it is very useful to define your own rule which can be instantiated by an app.
 
+**Warning:** If a rule applied to an input query hides a product and although the product is in some queries of other rules, then still on that product there will not be applied any other rules.
+
 ### Creating application rule
 
 Each application can define rules by exposing a URL. First you need to create such rule in the [Mergado Developers](https://app.mergado.com/developres/) center. In your App select `Rules` in left menu. You must provide:
