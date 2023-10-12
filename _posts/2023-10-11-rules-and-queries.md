@@ -99,13 +99,12 @@ Parameter | Description
 `version`| Date type field to specify which product data representation to use. Date must be in YYYY-MM-DD format.
 `regex filter` | You can specify the regex by which we'll filter project elements that are sent from mergado.
 `Mergado equivalent filter` | You can specify Mergado XML elements whose equivalent for the given format will be sent from Mergado.
-`element paths to extract`| You can specify list of element paths for whose we will send product data. This feature is available only for version >= `2022-09-10`
 `settings url` | You can specify the URL address where the settings request containing rule application details will be sent.
 
 
 ### Rule settings per each application
 
-For each rule application, it is possible to modify some of the above settings. Before the rule application settings request is sent to the `settings_url` specified in the [Mergado Developers](https://app.mergado.com/developres/) center, the default settings of the rule are included. Applications can than modify some of the provided settings thus modifying rule settings for this specific rule application. If no `settings_url` is provided, if an error occurs during the settings request, or if Mergado does not receive a response, default settings will automatically be applied.
+For each rule application, it is possible to modify some of the above settings. Before the rule application settings request is sent to the `settings_url` specified in the [Mergado Developers](https://app.mergado.com/developres/) center, the default settings of the rule are included. Applications can than modify some of the provided settings thus modifying rule settings for this specific rule application. If no `settings_url` is provided, if an error occurs during the settings request, or if Mergado does not receive a response, rule application will be terminated.
 Fields included in settings request:
 
 ```json
@@ -143,7 +142,8 @@ Explanation of the fields:
     + <span style="color:blue;">`version_for`</span> - Version of product data representation. Date must be in YYYY-MM-DD format.
     + <span style="color:blue;">`element_regex`</span> - Regex by which project elements will be filtered.
     + <span style="color:blue;">`mergado_xml_equivalent`</span> - Mergado XML elements whose equivalent for the given format will be sent from Mergado.
-    + <span style="color:blue;">`element_paths_to_extract`</span> - List of element paths for which product data will be sent.
+    + <span style="color:blue;">`element_paths_to_extract`</span> - List of element paths or variables for which product data will be sent. This field provides functionality
+    only if version >= `2022-09-10` is used. If any number of element paths are provided, the data request will include an additional field called `extracted_element_path_data` containing the product data found for those specific element paths.
     + <span style="color:blue;">`max_payload_size`</span> - Maximum number of characters sent in one data request. Maximum possible value is `15000000` characters.
     + <span style="color:blue;">`element_sending_policy`</span> - Policy of element filtration. There are only 3 possible values:
         - `advanced_settings` - Filter product data by using `element_regex` and `mergado_xml_equivalent`.
@@ -178,7 +178,7 @@ Explanation of the fields:
 * `data.app_rule_type` - This is `app_rule_type` you can find in Mergado Developers center
 
 ### Versioning
-Now application rule supports 2 versions. Version until `2022-09-10` and from `2022-09-10`. You can specify version you want to use in [Mergado Developers](https://app.mergado.com/developres/) center by specifying version parameter. Every `date >= 2022-09-10` means, that mergado will use new version and sent product data in the new representation.
+Now application rule supports 2 versions. Version until `2022-09-10` and from `2022-09-10`. You can specify version you want to use in [Mergado Developers](https://app.mergado.com/developres/) center by specifying version parameter. Every `date >= 2022-09-10` means, that MERGADO will use new version and sent product data in the new representation.
 
 ### Processing of application rule for version until 2022-09-10
 <details markdown="1">
@@ -245,7 +245,7 @@ Explanation of the fields:
     + `updated_at` - The last time the product has been changed.
     + `output_changed_at` - The last time the product changed its output values.
     + `data` - A key-value pair containing elements, their names and values. These values are altered by rules with higher priority (applied sooner in the chain of rules).
-    + `metadata` - Cached data for the whole application procces that you send before in response for this particular product in another rule.
+    + `metadata` - Cached data for the whole application process that you send before in response for this particular product in another rule.
 
 The request is considered to be a success if the server replies with a `200 OK` HTTP status code and the body of the response contains products' data in the same format. The application is not required to return all products, it is required to return only the products and elements that were processed and should be changed in some way. For example, the server's response might be:
 
@@ -358,7 +358,7 @@ Explanation of the fields:
     + `updated_at` - The last time the product has been changed.
     + `output_changed_at` - The last time the product changed its output values.
     + `data` - Nested structure representing product data. These values are altered by rules with higher priority (applied sooner in the chain of rules).
-    + `extracted_element_path_data` - Dictionary containing `element path - list of product values` key-value pairs extracted from product. Element paths can be specified in [Mergado Developers](https://app.mergado.com/developres/) center or in settings request field `element_paths_to_extract`.
+    + `extracted_element_path_data` - Dictionary containing `element path - list of product values` key-value pairs extracted from product. Element paths must be provided in the settings request during the initiation of the rule.
     + `metadata` - Cached data for the whole application process that you send before in response for this particular product in another rule.
 
 The request is considered to be a success if the server replies with a `200 OK` HTTP status code and the body of the response contains product’s data in the same format. The application is not required to return all products, it is required to return only the products and subtrees with top level elements as roots that were processed and should be changed in some way. If application wants to change the values ​​of elements, it is necessary to send the entire subtree in the response, starting with the top level element, in its final form. For example, the server's response might be:
