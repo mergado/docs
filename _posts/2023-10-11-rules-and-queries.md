@@ -104,26 +104,24 @@ Parameter | Description
 
 ### Rule settings per each application
 
-For each rule application, it is possible to modify some of the above settings. Before the rule application settings request is sent to the `settings_url` specified in the [Mergado Developers](https://app.mergado.com/developres/) center, the default settings of the rule are included. Applications can than modify some of the provided settings thus modifying rule settings for this specific rule application. If no `settings_url` is provided, if an error occurs during the settings request, or if Mergado does not receive a response, rule application will be terminated.
+For each rule application, it is possible to modify some of the above settings. Before the rule application settings request is sent to the `settings_url` specified in the [Mergado Developers](https://app.mergado.com/developres/) center, the default settings of the rule are included. Applications can than modify some of the provided settings thus, modifying rule settings for this specific rule application. If `settings_url` is provided and if an error occurs during the settings request, or if Mergado does not receive a response, rule application will be terminated.
 Fields included in settings request:
 
 ```json
 {
-   "project_id":"XXXX",
+   "project_id": "XXXX",
    "runtime_format": "heureka.sk",
-   "apply_settings":{
+   "apply_settings": {
       "app_full_name": "application_name",
-      "app_rule_type":"apps.application_name.dev.rule",
-      "app_url_address":"https://application_name.cz/rule/input",
-      "version_for":"2023-09-07",
-      "element_sending_policy":"advanced_settings",
-      "element_regex":"(*)",
-      "mergado_xml_equivalent":[
-         "ITEM_ID"
-      ],
-      "element_paths_to_extract":[
-         "IMG_URL {@@POSITION = 1}",
-         "IMG_URL {@@POSITION = 5}"
+      "app_rule_type": "apps.application_name.dev.rule",
+      "app_url_address": "https://application_name.cz/rule/input",
+      "version_for": "2023-09-07",
+      "element_sending_policy": "advanced_settings",
+      "element_regex": "(*)",
+      "mergado_xml_equivalent": ["ITEM_ID"],
+      "values_to_extract": [
+         "IMG_URL { @@POSITION = 1 }",
+         "IMG_URL { @@POSITION = 5 }"
       ],
       "max_payload_size": 1000000
    }
@@ -138,12 +136,12 @@ Explanation of the fields:
 * `apply_settings` - Settings of application rule.
     + `app_full_name` - Name of application that rule belongs to.
     + `app_rule_type` - ID of rule specified in [Mergado Developers](https://app.mergado.com/developres/) center.
-    + <span style="color:blue;">`app_url_address`</span> - URL address where product data will be send.
+    + <span style="color:blue;">`app_url_address`</span> - URL address where product data will be sent.
     + <span style="color:blue;">`version_for`</span> - Version of product data representation. Date must be in YYYY-MM-DD format.
     + <span style="color:blue;">`element_regex`</span> - Regex by which project elements will be filtered.
     + <span style="color:blue;">`mergado_xml_equivalent`</span> - Mergado XML elements whose equivalent for the given format will be sent from Mergado.
-    + <span style="color:blue;">`element_paths_to_extract`</span> - List of element paths or variables for which product data will be sent. This field provides functionality
-    only if version >= `2022-09-10` is used. If any number of element paths are provided, the data request will include an additional field called `extracted_element_path_data` containing the product data found for those specific element paths.
+    + <span style="color:blue;">`values_to_extract`</span> - List of element paths or variables for which product data will be sent. This field provides functionality
+    only if version >= `2022-09-10` is used. If any number of element paths are provided, the data request will include an additional field called `extracted_values` containing the product data found for those specific element paths.
     + <span style="color:blue;">`max_payload_size`</span> - Maximum number of characters sent in one data request. Maximum possible value is `15000000` characters.
     + <span style="color:blue;">`element_sending_policy`</span> - Policy of element filtration. There are only 3 possible values:
         - `advanced_settings` - Filter product data by using `element_regex` and `mergado_xml_equivalent`.
@@ -307,9 +305,9 @@ In the version `from 2022-09-10`, the backend sends the data on URL you specifie
                }
 
             },
-            "extracted_element_path_data": {
+            "extracted_values": {
                 "IMAGE { @@POSITION = 2 }": ["www.image2.com"],
-                "GIFT { @ID = 'KVP-12'}": ["Free Delivery"]
+                "GIFT { @ID = 'KVP-12' }": ["Free Delivery"]
             }
             "metadata": {
                 "..."
@@ -333,9 +331,9 @@ In the version `from 2022-09-10`, the backend sends the data on URL you specifie
 		        }]
                }
             },
-            "extracted_element_path_data": {
+            "extracted_values": {
                 "IMGURL { @@POSITION = 2 }": ["www.image5.com"],
-                "GIFT { @ID = 'KVP-12'}": ["Discount 10$"]
+                "GIFT { @ID = 'KVP-12' }": ["Discount 10$"]
             }
             "metadata": {
                 "..."
@@ -358,7 +356,7 @@ Explanation of the fields:
     + `updated_at` - The last time the product has been changed.
     + `output_changed_at` - The last time the product changed its output values.
     + `data` - Nested structure representing product data. These values are altered by rules with higher priority (applied sooner in the chain of rules).
-    + `extracted_element_path_data` - Dictionary containing `element path - list of product values` key-value pairs extracted from product. Element paths must be provided in the settings request during the initiation of the rule.
+    + `extracted_values` - Dictionary containing `element path - list of product values` key-value pairs extracted from product. Element paths must be provided in the settings request during the initiation of the rule.
     + `metadata` - Cached data for the whole application process that you send before in response for this particular product in another rule.
 
 The request is considered to be a success if the server replies with a `200 OK` HTTP status code and the body of the response contains product’s data in the same format. The application is not required to return all products, it is required to return only the products and subtrees with top level elements as roots that were processed and should be changed in some way. If application wants to change the values ​​of elements, it is necessary to send the entire subtree in the response, starting with the top level element, in its final form. For example, the server's response might be:
@@ -381,7 +379,7 @@ The request is considered to be a success if the server replies with a `200 OK` 
 		        }]
                 }
             },
-            "extracted_element_path_data": {
+            "extracted_values": {
                 "IMGURL { @@POSITION = 2 }": "www.new_image.com",
                 "ITEM_ID": "777",
                 "GIFTS { @@POSITION = 2 } | GIFT": "Discount 15$"
@@ -407,8 +405,8 @@ There are more ways do delete data for the specific element:
 * `"IMGURL": [{}, {"value": "www.image5.com"}]` - Delete the first value of the element IMGURL and delete values of all elements and attributes in its subtree.
 * `"IMGURL": [{"value": ""}, {"value": "www.image5.com"}]` - Delete the first value of the element IMGURL. If the element has children or attributes, they won't be changed.
 
-#### Processing of extracted_element_path_data field
-Application can modify, delete or create value of the product by using extracted_element_path_data field. This field contains dictionary with `element path - new product value` key-value pairs. Mergado will update all product values associated with the provided element_path to the new value. Value must be string. Any other value will trigger an error, leading to the termination of the rule application.
+#### Processing of extracted_values field
+Application can modify, delete or create value of the product by using extracted_values field. This field contains dictionary with `element path - new product value` key-value pairs. Mergado will update all product values associated with the provided element_path to the new value. Value must be string. Any other value will trigger an error, leading to the termination of the rule application.
 </details>
 
 
