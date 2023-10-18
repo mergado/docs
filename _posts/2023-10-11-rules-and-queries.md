@@ -88,16 +88,69 @@ Each application can define rules by exposing a URL. First you need to create su
 Parameter | Description
 ------ | -----------
 `Title`| Description of your rule.
-`ID` | ID you specify here will be converted into `app_rule_type` you use in API to instantiate new rule. It will be in format `apps.<your-app-name>.<ID>`. <br><br>Note: Stages (`dev` and `production`) have different type. 
+`ID` | ID you specify here will be converted into `app_rule_type` you use in API to instantiate new rule. It will be in format `apps.<your-app-name>.<ID>`. <br><br>Note: Stages (`dev` and `production`) have different type.
 `URL` | URLs for your rules. Stages (`dev` and `prodution`) can have different URLs.
 
-There are also optional settings which you can use to specify version of product data representation and filters for product elements.
- 
+There are also optional settings which you can use to specify version of product data representation, filters for product elements or URL address where settings request will be sent.
+
+
 Parameter | Description
 ------ | -----------
 `version`| Date type field to specify which product data representation to use. Date must be in YYYY-MM-DD format.
 `regex filter` | You can specify the regex by which we'll filter project elements that are sent from mergado.
 `Mergado equivalent filter` | You can specify Mergado XML elements whose equivalent for the given format will be sent from Mergado.
+`settings url` | You can specify the URL address where the settings request containing rule application details will be sent.
+
+
+### Rule settings per each application
+
+For each rule application, it is possible to modify some of the above settings. Before the rule application settings request is sent to the `settings_url` specified in the [Mergado Developers](https://app.mergado.com/developres/) center, the default settings of the rule are included. Applications can than modify some of the provided settings thus, modifying rule settings for this specific rule application. If `settings_url` is provided and if an error occurs during the settings request, or if Mergado does not receive a response, rule application will be terminated.
+Fields included in settings request:
+
+```json
+{
+   "project_id": "XXXX",
+   "runtime_format": "heureka.sk",
+   "apply_settings": {
+      "app_full_name": "application_name",
+      "app_rule_type": "apps.application_name.dev.rule",
+      "app_url_address": "https://application_name.cz/rule/input",
+      "version_for": "2023-09-07",
+      "element_sending_policy": "advanced_settings",
+      "element_regex": "(*)",
+      "mergado_xml_equivalent": ["ITEM_ID"],
+      "values_to_extract": [
+         "IMG_URL { @@POSITION = 1 }",
+         "IMG_URL { @@POSITION = 5 }"
+      ],
+      "max_payload_size": 1000000
+   }
+}
+
+```
+
+Explanation of the fields:
+
+* `project_id` - ID of the project. Changes in products by application rule are applied to this project.
+* `runtime_format` - Name of the format in which the products are represented when this rule is applied.
+* `apply_settings` - Settings of application rule.
+    + `app_full_name` - Name of application that rule belongs to.
+    + `app_rule_type` - ID of rule specified in [Mergado Developers](https://app.mergado.com/developres/) center.
+    + <span style="color:blue;">`app_url_address`</span> - URL address where product data will be sent.
+    + <span style="color:blue;">`version_for`</span> - Version of product data representation. Date must be in YYYY-MM-DD format.
+    + <span style="color:blue;">`element_regex`</span> - Regex by which project elements will be filtered.
+    + <span style="color:blue;">`mergado_xml_equivalent`</span> - Mergado XML elements whose equivalent for the given format will be sent from Mergado.
+    + <span style="color:blue;">`values_to_extract`</span> - List of element paths or variables for which product data will be sent. This field provides functionality
+    only if version >= `2022-09-10` is used. If any number of element paths are provided, the data request will include an additional field called `extracted_values` containing the product data found for those specific element paths.
+    + <span style="color:blue;">`max_payload_size`</span> - Maximum number of characters sent in one data request. Maximum possible value is `15000000` characters.
+    + <span style="color:blue;">`element_sending_policy`</span> - Policy of element filtration. There are only 3 possible values:
+        - `advanced_settings` - Filter product data by using `element_regex` and `mergado_xml_equivalent`.
+        - `send_all_elements` - Send all product data.
+        - `send_no_elements` - Send no product data at all.
+
+
+In response, application can change blue colored fields. Any other modification will be ignored and default value sent to application will be used.
+
 
 ### Instantiating new rule via Mergado API
 
@@ -123,7 +176,7 @@ Explanation of the fields:
 * `data.app_rule_type` - This is `app_rule_type` you can find in Mergado Developers center
 
 ### Versioning
-Now application rule supports 2 versions. Version until `2022-09-10` and from `2022-09-10`. You can specify version you want to use in [Mergado Developers](https://app.mergado.com/developres/) center by specifing version parameter. Every `date >= 2022-09-10` means, that mergado will use new version and sent product data in the new representation. 
+Now application rule supports 2 versions. Version until `2022-09-10` and from `2022-09-10`. You can specify version you want to use in [Mergado Developers](https://app.mergado.com/developres/) center by specifying version parameter. Every `date >= 2022-09-10` means, that MERGADO will use new version and sent product data in the new representation.
 
 ### Processing of application rule for version until 2022-09-10
 <details markdown="1">
@@ -190,7 +243,7 @@ Explanation of the fields:
     + `updated_at` - The last time the product has been changed.
     + `output_changed_at` - The last time the product changed its output values.
     + `data` - A key-value pair containing elements, their names and values. These values are altered by rules with higher priority (applied sooner in the chain of rules).
-    + `metadata` - Cached data for the whole application procces that you send before in response for this particular product in another rule.
+    + `metadata` - Cached data for the whole application process that you send before in response for this particular product in another rule.
 
 The request is considered to be a success if the server replies with a `200 OK` HTTP status code and the body of the response contains products' data in the same format. The application is not required to return all products, it is required to return only the products and elements that were processed and should be changed in some way. For example, the server's response might be:
 
@@ -243,15 +296,19 @@ In the version `from 2022-09-10`, the backend sends the data on URL you specifie
 			"DELIVERY_DATE": [{"value": "0"}],
 			"IMGURL": [{"value": "www.image1.com"}, {"value": "www.image2.com"}],
 			"GIFTS": [{
-				"attributes": {"ID": {"value": "KVP-12"}}, 
+				"attributes": {"ID": {"value": "KVP-12"}},
 				"elements": {"GIFT": [{"value": "Free Delivery"}]}
 			}]
                },
                "attributes": {
                		"TOP_LEVEL_ATTRIBUTE": {"value": "123456"}
                }
-                
+
             },
+            "extracted_values": {
+                "IMAGE { @@POSITION = 2 }": ["www.image2.com"],
+                "GIFT { @ID = 'KVP-12' }": ["Free Delivery"]
+            }
             "metadata": {
                 "..."
             }
@@ -262,18 +319,22 @@ In the version `from 2022-09-10`, the backend sends the data on URL you specifie
             "updated_at": "2016-04-28T17:18:50+00:00",
             "output_changed_at": null,
             "data": {
-            	"elements":{ 
+            	"elements":{
 		        "ITEM_ID": [{"value": "5336"}],
 		        "PRODUCTNAME": [{"value": "Epson LX 100 EPS"}],
 		        "DELIVERY_DATE": [{"value": "3"}],
 		        "EAN": [{"value": "0010313601581"}],
 		        "IMGURL": [{"value": "www.image4.com"}, {"value": "www.image5.com"}],
 		        "GIFTS": [{
-		        	"attributes": {"ID": {"value": "KVP-175"}}, 
+		        	"attributes": {"ID": {"value": "KVP-175"}},
 		        	"elements": {"GIFT": [{"value": "Discount 10$"}]}
 		        }]
                }
             },
+            "extracted_values": {
+                "IMGURL { @@POSITION = 2 }": ["www.image5.com"],
+                "GIFT { @ID = 'KVP-12' }": ["Discount 10$"]
+            }
             "metadata": {
                 "..."
             }
@@ -295,7 +356,8 @@ Explanation of the fields:
     + `updated_at` - The last time the product has been changed.
     + `output_changed_at` - The last time the product changed its output values.
     + `data` - Nested structure representing product data. These values are altered by rules with higher priority (applied sooner in the chain of rules).
-    + `metadata` - Cached data for the whole application procces that you send before in response for this particular product in another rule.
+    + `extracted_values` - Dictionary containing `element path - list of product values` key-value pairs extracted from product. Element paths must be provided in the settings request during the initiation of the rule.
+    + `metadata` - Cached data for the whole application process that you send before in response for this particular product in another rule.
 
 The request is considered to be a success if the server replies with a `200 OK` HTTP status code and the body of the response contains product’s data in the same format. The application is not required to return all products, it is required to return only the products and subtrees with top level elements as roots that were processed and should be changed in some way. If application wants to change the values ​​of elements, it is necessary to send the entire subtree in the response, starting with the top level element, in its final form. For example, the server's response might be:
 
@@ -312,11 +374,16 @@ The request is considered to be a success if the server replies with a `200 OK` 
 		        	"attributes": {
 		        		"ID": {"value": "KVP-175"}
 		        		"DURATION": {"value": "3 weeks"}
-		        	}, 
+		        	},
 		        	"elements": {"GIFT": [{"value": "Discount 10$"}]}
 		        }]
                 }
             },
+            "extracted_values": {
+                "IMGURL { @@POSITION = 2 }": "www.new_image.com",
+                "ITEM_ID": "777",
+                "GIFTS { @@POSITION = 2 } | GIFT": "Discount 15$"
+            }
             "metadata": {
                 "..."
             }
@@ -328,16 +395,18 @@ The request is considered to be a success if the server replies with a `200 OK` 
 #### Changing the value of an element
 It is possible to change the value of the element by changing the `value` field of the given element. In case of changing the value of a nested element, it is necessary to send the entire structure in which it is located (whole subtree from top level elements to tree leaves).
 
-#### Creation of a new element value 
+#### Creation of a new element value
 Newly created values ​​for the product element must be inserted at the end of the list of values ​​for the given element. For example, `"IMGURL": [{"value": "www.image1.com"}, {"value": "www.image5.com"}, {"value": "new_value_of_IMGURL"}] ` means that the application wants to add a new value (new_value_of_IMGURL) for the element IMGURL.
 It is possible to create whole new subtrees using fields `elements` and `attributes` with the same semantic as shown in the previous server's response.
 
 #### Deletion of values ​​of product elements
 There are more ways do delete data for the specific element:
 * `"IMGURL": []` - Delete the value for all occurrences of the given element in the product. If the occurrence of the given element has children or attributes, their values ​​will also be deleted (values of the whole subtree for all occurrences of specified element will be deleted).
-* `"IMGURL": [{}, {"value": "www.image5.com"}]` - Delete the first value of the element IMGURL and delete values of all elements and attributes in its subtree. 
+* `"IMGURL": [{}, {"value": "www.image5.com"}]` - Delete the first value of the element IMGURL and delete values of all elements and attributes in its subtree.
 * `"IMGURL": [{"value": ""}, {"value": "www.image5.com"}]` - Delete the first value of the element IMGURL. If the element has children or attributes, they won't be changed.
-               
+
+#### Processing of extracted_values field
+Application can modify, delete or create value of the product by using extracted_values field. This field contains dictionary with `element path - new product value` key-value pairs. Mergado will update all product values associated with the provided element_path to the new value. Value must be string. Any other value will trigger an error, leading to the termination of the rule application.
 </details>
 
 
