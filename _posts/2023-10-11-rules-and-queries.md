@@ -111,6 +111,7 @@ Fields included in settings request:
 {
    "project_id": "XXXX",
    "runtime_format": "heureka.sk",
+   "rule_id": 1,
    "apply_settings": {
       "app_full_name": "application_name",
       "app_rule_type": "apps.application_name.dev.rule",
@@ -133,6 +134,7 @@ Explanation of the fields:
 
 * `project_id` - ID of the project. Changes in products by application rule are applied to this project.
 * `runtime_format` - Name of the format in which the products are represented when this rule is applied.
+* `rule_id` - ID of rule that will be applied on specified project.
 * `apply_settings` - Settings of application rule.
     + `app_full_name` - Name of application that rule belongs to.
     + `app_rule_type` - ID of rule specified in [Mergado Developers](https://app.mergado.com/developres/) center.
