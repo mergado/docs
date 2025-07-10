@@ -1,38 +1,34 @@
 # Mergado Apps Documentation
 
-The official documentation for Mergado Apps platform which is build with GitHub Pages.
+The official documentation for Mergado Apps platform.
 
-## Installation
+This documentation is created with Jekyll ([official documentation](https://jekyllrb.com/docs/usage/)) and then served as GitHub pages.
 
-To serve the website on your local computer, you need to install Jekyll and expected dependencies. You can do that using the [Bundler](https://bundler.io/):
+## Contributing
+Much of the complexity of preparing Jekyll _(installing Ruby, dependencies and whatnot)_ is hidden thanks to our Docker-based tooling. Only a few things are required if you want to have these docs served locally:
+- `git`
+- `docker`
 
-```bash
-sudo apt-get install -y ruby ruby-dev make gcc
-sudo gem update --system
-sudo gem install bundler
+You can clone this repo with git:
+
+```sh
+git clone git@github.com:mergado/docs.git mergado-docs
 ```
 
-Then, **in the project's directory**, install dependencies specified the `Gemfile` locally to the project's directory by running:
-```
-bundle install --path vendor/bundle
-```
+### Locally served pages
+A convenience Docker-based script for building and serving pages locally is available:
 
-```bash
-git clone git@github.com:mergado/docs.git
+```sh
+./bin/local.sh
 ```
 
-## Basic Usage
+This will run start Jekyll and serve the final site at `http://localhost:4000/` by default.
 
+### Creating new pages
 Usually, you only need to run the following command which generates HTML files into `./_site`:
 
-```bash
-bundle exec jekyll serve
+```sh
+python ./bin/jekyll-page
 ```
 
-This command also runs a built-in development server (at http://localhost:4000/ by default). For more information follow the [official documentation](https://jekyllrb.com/docs/usage/).
-
-If you want to create a new section to appear in the navigation, edit the `_config.yml` in root and run the command for creating a new page, for example:
-
-```bash
-$ ruby bin/jekyll-page "Authentication" api
-```
+If you want to create a new section to appear in the navigation, edit the `_config.yml` in root of the repository:
