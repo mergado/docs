@@ -81,7 +81,7 @@ https://app.mergado.com/new-project/prefill/
 - `outputFormat`: The ID of the output format to prefill for the new project.
 
 {: .message.info}
-**Note:** List of supported input and/or output formats and their IDs is a living thing and changes with time. If needed, please consult the Mergado staff.
+**Note:** List of supported input and/or output formats and their IDs is a living thing and changes with time. Current list of all format IDs known to Mergado is [here](https://api.mergado.com/formats). If needed, please consult the Mergado staff.
 
 ## Styled HTML button
 
