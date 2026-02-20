@@ -35,9 +35,9 @@ error                             | chyba                                | Audit
 warning                           | varování                             | Audited feed contains suspicious issues.
 recommendation                    | doporučení                           | Only recommendations to consider further improovements of the XML feed.
 notification                      | oznámení, upomínka, notifikace       | Mergado uses notifications to inform users about critical errors in their exports, changes in their tariff and so on. Notifications can be sent via an e-mail or may pop up in Mergado.
-application, app                  | aplikace                             | Apps are programs created by external developers which add new features to Mergado in the form of extensions.
-production stage                  | produkční instalace aplikace         | Version (or revision) of an app which is available to all users in Mergado.
-development stage                 | aplikace ve fázi vývoje              | Version (or revision) of an app which is available only to its developers.
+application, app, **extension**    | aplikace, **rozšíření**              | Apps (called **extensions** in client-facing communication) are programs created by external developers which add new features to Mergado. **Developer docs use the term *app*; Mergado Store and all client-facing materials use the term *extension*. Both refer to the same thing.**
+production stage                  | produkční instalace aplikace         | Version (or revision) of an app (extension) which is available to all users in Mergado.
+development stage                 | aplikace ve fázi vývoje              | Version (or revision) of an app (extension) which is available only to its developers.
 format                            | formát                               | Feeds are usually XML files created according to chosen XML specifications. Feed's specification is called a format. 
 input format                      | vstupní formát                       | The format of the feed imported into Mergado.
 output format                     | výstupní formát                      | The format of the feed exported from Mergado.
@@ -66,8 +66,7 @@ worker                            | worker                               | A pro
 
 Name                  | Description
 --------------------- | -----------
-Mergado Apps          | A platform for developers who want to create features for Mergado in form of extensions.
-App Cloud             | Server where all applications built on Mergado Apps run.
+Mergado Apps          | A platform for developers who want to create features for Mergado in the form of extensions (called *apps* in developer documentation and internally).
 Developers (Center)   | A place where developers can register and manage new apps.
 Accounts              | Website where users register and manage their account.
 (Mergado) Store       | A place for users to buy new apps for Mergado.

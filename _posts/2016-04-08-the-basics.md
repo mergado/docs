@@ -7,6 +7,9 @@ active_item: ""
 order: 1
 ---
 
+{: .message.info}
+**Naming note:** In developer documentation and internally, the features built on top of Mergado are called **apps** (or *applications*). In client-facing communication — such as Mergado Store — the same things are called **extensions**. No components or APIs were renamed; only the client-facing terminology changed. Wherever you see *app* in this documentation, know that clients call it an *extension*.
+
 Even though Mergado was originally developed as a closed system, throughout the years it became apparent that a possibility of extending our core features with external, third-party logic *(which we might've never thought of)*, could be quite a useful thing to do. Hence, our Mergado platform gives you - as a third party - a way of adding new functionality to Mergado, which can be used by its users.
 
 ## Before you start
@@ -25,9 +28,9 @@ Projects or exports are often interchangeable in our case. A project or export i
 
 Each project is created when a new XML feed is imported in Mergado. We say that this XML feed contains _input_ data and we may also sometimes use the phrase _"input feed"_. Mergado users can modify their XML feed in Mergado. This modification is usually done with _rules_ and _queries_ (more about this later in its own chapter). When this modification is applied to the input data, we say that the result is an _output feed_ which contains output data.
 
-### App types
+### App types (extension types)
 
-There are three types of apps. Each type has its specifics:
+There are three types of apps (extensions). Each type has its specifics:
 
 - _for exports_ (`project` type) -- the application is intended for exports and is also paid per export.
 - _for eshops_ (`shop` type) -- the application is intended for eshops and is also paid for per eshop.
@@ -35,16 +38,6 @@ There are three types of apps. Each type has its specifics:
 
 For example the `user` type app can be something like a notebook where a user can write something only he or she can see. On the other hand, an app for exports could scan all products and report some statistics. Another differenc is that each type of app is accessible from a different location in Mergado.
 
-## Hosting apps
+## Setting up a new app (extension)
 
-All applications are hosted on _App Cloud_. Each application has its own repository and a database. App Cloud also helps developers test and develop their applications, i.e. there is no need to install Apache and PHP on localhost. The development environment can be accessed with SFTP or SSH.
-
-### Supported technologies
-
-Currently, applications running on Mergado platform can be written only in **PHP**, and only **MySQL** and **Redis** is supported for data storage. Other programming languages (e.g. Python) and databases (e.g. PostgreSQL) are planned in the future.
-
-Additionally, developers are allowed to set up Cron for job-scheduling (`crontab` command). We also host our own pre-installed Sentry instance for logging events which can be used freely by developers. Sentry is available at [https://sentry-appcloud.mergado.com](https://sentry-appcloud.mergado.com/).
-
-## Setting up a new app
-
-Apps are registered in the [Developers Center](https://developers.mergado.com). The registration results in a new repository on our _App Cloud_. For more information on how to set up a new app go to the [Setting Up](setting-up.html) page.
+Apps (extensions) are registered in the [Developers Center](https://developers.mergado.com). For more information on how to set up a new app go to the [Setting Up](setting-up.html) page.

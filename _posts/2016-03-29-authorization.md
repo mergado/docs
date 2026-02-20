@@ -6,7 +6,7 @@ date: 2016-03-29 16:56:33
 active_item: ""
 ---
 
-To access Mergado API, clients (e.g. an application) are authenticated using [OAuth 2.0](https://tools.ietf.org/html/rfc6749). Each application is required to have its OAuth credentials which can be obtained from the Mergado [developers center](https://developers.mergado.com) (when you register your application, a client ID and a secret key is assigned to your application).
+To access Mergado API, clients (e.g. an application / extension) are authenticated using [OAuth 2.0](https://tools.ietf.org/html/rfc6749). Each application is required to have its OAuth credentials which can be obtained from the Mergado [developers center](https://developers.mergado.com) (when you register your application, a client ID and a secret key is assigned to your application).
 
 ## Grant Types
 
@@ -33,7 +33,7 @@ To obtain an access token using the `authorization_code` grant type, the followi
    ```
    https://app.mergado.com/oauth2/authorize/
    ?client_id=123
-   &redirect_uri=https://appcloud.mergado.com
+   &redirect_uri=https://your-app.example.com
    &response_type=code
    &grant_type=authorization_code
    &entity_id=456
@@ -104,7 +104,7 @@ To obtain an access token using the Implicit grant type, the following steps nee
    ?response_type=token
    &client_id=123
    &entity_id=123
-   &redirect_uri=https://appcloud.mergado.com
+   &redirect_uri=https://your-app.example.com
    ```
 
 2. The authorization server redirects to `redirect_uri` with an access token in the fragment of URL.
@@ -112,7 +112,7 @@ To obtain an access token using the Implicit grant type, the following steps nee
    **Example:**
 
    ```
-   https://appcloud.mergado.com/
+   https://your-app.example.com/
    &access_token=f841a16676a2fa66222a3d70faae92c70f78fc65
    &expires_in=3600
    &token_type=bearer&entity_id=123

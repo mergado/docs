@@ -60,7 +60,7 @@ mergadoButtonHtml: |
 
 ## Creating new projects easily
 
-If you want to integrate your software — whether it's a Mergado platform app or any other web app — with Mergado by allowing your users to create a **new project** in Mergado quickly and easily, we offer you a _"prefill URL"_ which navigates the user's browser to the _"new project wizard"_ page, with the input feed URL, or even additional settings, already filled in:
+If you want to integrate your software — whether it's a Mergado platform app (extension) or any other web app — with Mergado by allowing your users to create a **new project** in Mergado quickly and easily, we offer you a _"prefill URL"_ which navigates the user's browser to the _"new project wizard"_ page, with the input feed URL, or even additional settings, already filled in:
 
 #### Minimal version
 `https://app.mergado.com/new-project/prefill/?url=<feed_url>`
