@@ -8,7 +8,7 @@ order: 1
 ---
 
 {: .message.info}
-**Naming note:** In developer documentation and internally, the features built on top of Mergado are called **apps** (or *applications*). In client-facing communication — such as Mergado Store — the same things are called **extensions**. No components or APIs were renamed; only the client-facing terminology changed. Wherever you see *app* in this documentation, know that clients call it an *extension*.
+**Naming note:** In developer documentation and internally, the features built on top of Mergado are called **apps** (or *applications*). In client-facing communication — such as Mergado Store — the same things are called **extensions**. No components or APIs were renamed; only the client-facing terminology changed. Wherever you see *app* in this documentation, know that users call it an *extension*.
 
 Even though Mergado was originally developed as a closed system, throughout the years it became apparent that a possibility of extending our core features with external, third-party logic *(which we might've never thought of)*, could be quite a useful thing to do. Hence, our Mergado platform gives you - as a third party - a way of adding new functionality to Mergado, which can be used by its users.
 
@@ -32,7 +32,7 @@ Each project is created when a new XML feed is imported in Mergado. We say that 
 
 There are three types of apps (extensions). Each type has its specifics:
 
-- _for exports_ (`project` type) -- the application is intended for exports and is also paid per export.
+- _for projects_ (`project` type) -- the application is intended for projects and is also paid per project.
 - _for eshops_ (`shop` type) -- the application is intended for eshops and is also paid for per eshop.
 - _for users_ (`user` type) -- the application is intended for users and is also paid for per user.
 
