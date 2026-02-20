@@ -7,7 +7,7 @@ active_item: ""
 order: 2
 ---
 
-Scopes define permissions for clients or applications. When a developer is creating an application, they choose a list of permissions (scopes) which will be granted to this application. For example, an application greeting a user with _Hello {username}!_ won't work unless the scope `user.read` is enabled.
+Scopes define permissions for clients or applications (extensions). When a developer is creating an application (extension), they choose a list of permissions (scopes) which will be granted to this application. For example, an application greeting a user with _Hello {username}!_ won't work unless the scope `user.read` is enabled.
 
 {: .info}
 **Important!** Applications should request only the list of permissions they truly need, otherwise a paranoid user could be discouraged from installing the application.

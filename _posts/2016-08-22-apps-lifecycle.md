@@ -7,7 +7,7 @@ active_item: ""
 order: 5
 ---
 
-Each app visible to the end user has, in fact, two separate versions (referred to as *stages*) behind the curtains:
+Each app (extension) visible to the end user has, in fact, two separate versions (referred to as *stages*) behind the curtains:
 
 1. **PRODUCTION** stage, which represents the current approved and publicly released version of the application that end users use.
 2. **DEVELOPMENT** *(dev)* stage, which is the version visible **only** to the app's developers and **not** to end users. This is the stage you as a developer will be working with most of the time.
@@ -15,10 +15,10 @@ Each app visible to the end user has, in fact, two separate versions (referred t
 {: .info}
 This is the reason why you, as a developer, see all your applications in Mergado Store as two items. One representing the *production stage* and the other one the *development stage*. This allows you to code and test your app separately from what end users see and use. The developer works with the development stage during your development process while the end users are using the separated production stage at the same time.
 
-## Creating an app
-When a vendor creates an app, both stages are created simultaneously, the production stage of the app starts is hidden in Mergado Store from the end users, as your app has not been *released* yet.
+## Creating an app (extension)
+When a vendor creates an app (extension), both stages are created simultaneously, the production stage of the app starts is hidden in Mergado Store from the end users, as your app has not been *released* yet.
 
-# Lifecycle of an app
+# Lifecycle of an app (extension)
 
 In addition to two stages of an app co-existing, app also is in one of the five *(release)* states, each one representing where in the *release* process the app currently is. These states are:
 

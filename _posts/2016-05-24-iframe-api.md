@@ -7,7 +7,7 @@ active_item: ""
 order: 4
 ---
 
-The primary way of displaying the application's content inside Mergado pages is through the use of `IFRAME` elements. Furthermore, these `IFRAMEs` are [sandboxed](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#attr-sandbox) to eliminate security risks that may arise from using potentially untrusted content inside `IFRAMEs` that are placed in the middle of Mergado's own pages. Since sandboxed `IFRAMEs` cannot speak directly with the rest of the Mergado page and vice versa, some standard form of JavaScript communication between the app's viewport and the page around it must be defined.
+The primary way of displaying the application's (extension's) content inside Mergado pages is through the use of `IFRAME` elements. Furthermore, these `IFRAMEs` are [sandboxed](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#attr-sandbox) to eliminate security risks that may arise from using potentially untrusted content inside `IFRAMEs` that are placed in the middle of Mergado's own pages. Since sandboxed `IFRAMEs` cannot speak directly with the rest of the Mergado page and vice versa, some standard form of JavaScript communication between the app's viewport and the page around it must be defined.
 
 Such standard form of communication is represented by the **Mergado App IFRAME API** *(MAIA)* provided by Mergado platform. It is through this *API* that app's viewport `IFRAME` and Mergado wrapper page can communicate with each other.
 
@@ -128,7 +128,7 @@ The `Mergado` object has a number of methods which can be used to better your ap
 				</li>
 				<li>
 					If this page is loaded then IFRAME src attribute is created from
-					<pre class="highlight"><code>appcloud.mergado.com/apps/appname/</code></pre>
+					<pre class="highlight"><code>&lt;your-extension-host&gt;/apps/appname/</code></pre>
 					and query string <code class="highlighter-rouge">route</code> parameter
 					<pre class="highlight"><code>eshop/1/project/2/help/</code></pre>
 				</li>
