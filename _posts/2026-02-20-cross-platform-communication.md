@@ -21,7 +21,7 @@ Four communication scenarios are supported:
 
 ## App → Mergado and External Application → Mergado
 
-These two scenarios work exactly as they do today, using the existing OAuth 2.1 authorization described in the [Authorization](authorization.html) and [OAuth Scopes](oauth-scopes.html) documentation. No changes are required.
+These two scenarios work exactly as they do today, using the existing OAuth 2.1 authorization described in the [Authorization](https://mergado.github.io/docs/api/authorization.html) and [OAuth Scopes](https://mergado.github.io/docs/api/oauth-scopes.html) documentation. No changes are required.
 
 ## Calling an App via the Proxy
 
@@ -132,7 +132,7 @@ The endpoint always returns `HTTP 200` with a result for each requested check:
 }
 ```
 
-See the [API documentation](https://docs.mergado.apiary.io/) *(future link)* for full details.
+See the [API documentation](https://mergado.docs.apiary.io/) *(future link)* for full details.
 
 #### When to call the access check endpoint
 
