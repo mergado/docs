@@ -56,6 +56,20 @@ Field          | Description
 {: .message}
 **Important:** JWT tokens are **not refreshable**. Each proxied request receives its own fresh token valid for ~5 minutes. Once expired, the token cannot be used and a new request must be made.
 
+### Verifying the JWT Token
+
+When your app receives a proxied request, it **must verify the JWT token** before processing the request:
+
+1. **Check expiration** — reject tokens where `expires_at` is in the past.
+2. **Verify the signature** — validate that the token was issued by Mergado using the public key available at the [JWKS endpoint](https://api-docs.mergado.com/?api=mergado-api#/.well-known/jwks.json):
+
+```
+GET https://api.mergado.com/.well-known/jwks.json
+```
+
+{: .message}
+**Important:** Never skip JWT verification. Without it, any third party could forge a proxied request to your app. Always verify both the token's expiration and its signature against Mergado's public key.
+
 ### Using the JWT Token for Further API Calls
 
 The app can take the received JWT token and use it as a `Bearer` token in subsequent calls to the Mergado API:
@@ -132,7 +146,7 @@ The endpoint always returns `HTTP 200` with a result for each requested check:
 }
 ```
 
-See the [API documentation](https://mergado.docs.apiary.io/) *(future link)* for full details.
+See the [API documentation](https://api-docs.mergado.com/?api=mergado-api) *(future link)* for full details.
 
 #### When to call the access check endpoint
 
