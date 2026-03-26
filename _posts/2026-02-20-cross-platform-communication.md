@@ -7,9 +7,6 @@ active_item: ""
 order: 7
 ---
 
-{: .message}
-**Planned — not yet implemented:** This document describes future API changes that are designed but not yet available. It is published early to allow app (extension) developers to validate the proposed design and to begin preparation before the feature is officially released.
-
 This document describes how communication between apps (extensions), external applications, and Mergado is intended to work once the new cross-platform communication layer is in place. Everything builds on top of the existing Mergado API authorization model — no new authorization system is introduced.
 
 Four communication scenarios are supported:
@@ -51,7 +48,7 @@ Field          | Description
 `entity_id`   | ID of the entity making the request (user, shop, or project ID).
 `entity_type` | Type of the entity: `user`, `shop`, or `project`.
 `scopes`      | Intersection of the caller's OAuth scopes and the target app's registered scopes.
-`expires_at`         | Expiration timestamp — approximately **5 minutes** from the time of issue.
+`exp`         | Expiration timestamp — approximately **5 minutes** from the time of issue.
 
 {: .message}
 **Important:** JWT tokens are **not refreshable**. Each proxied request receives its own fresh token valid for ~5 minutes. Once expired, the token cannot be used and a new request must be made.
@@ -60,7 +57,7 @@ Field          | Description
 
 When your app receives a proxied request, it **must verify the JWT token** before processing the request:
 
-1. **Check expiration** — reject tokens where `expires_at` is in the past.
+1. **Check expiration** — reject tokens where `exp` is in the past.
 2. **Verify the signature** — validate that the token was issued by Mergado using the public key available at the [JWKS endpoint](https://api-docs.mergado.com/?api=mergado-api#/.well-known/jwks.json):
 
 ```
