@@ -48,6 +48,7 @@ Field          | Description
 `entity_id`   | ID of the entity making the request (user, shop, or project ID).
 `entity_type` | Type of the entity: `user`, `shop`, or `project`.
 `scopes`      | Intersection of the caller's OAuth scopes and the target app's registered scopes.
+`aud`         | Name of the target app (`app_name` from the proxy URL) — identifies which app this token was issued for.
 `exp`         | Expiration timestamp — approximately **5 minutes** from the time of issue.
 
 {: .message}
@@ -75,7 +76,7 @@ The app can take the received JWT token and use it as a `Bearer` token in subseq
 Authorization: Bearer <jwt_token>
 ```
 
-Requests made with this token behave as if the original entity were making them directly — with permissions limited to the scope intersection in the token. This means:
+Requests made with this token behave as if the original entity were making them directly — with permissions limited to the scope intersection in the token. Mergado additionally enforces a **dual access check**: both the caller (`entity_id`) and the target app (`aud`) must have independent access to the requested entity. This means:
 
 - The app **does not need to independently verify** whether the caller has access to Mergado resources — it can simply forward the token and let the API enforce access.
 - The token can be passed to any standard Mergado API endpoint the caller would have been permitted to access.
