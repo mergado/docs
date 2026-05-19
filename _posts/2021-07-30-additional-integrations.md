@@ -101,19 +101,21 @@ If you require a connection with one of the services in Mergado Keychain and the
 you can redirect from your app to Mergado Keychain to create this connection.
 
 #### Minimal version
-`https://app.mergado.com/go/keychain
+`https://app.mergado.com/go/keychain/create-link
 ?eshopId=<eshop_id>
-&connection=<connection_name>`
+&type=<connection_name>`
 
 #### With additional options
 ```
-https://app.mergado.com/go/keychain
+https://app.mergado.com/go/keychain/create-link
 ?eshopId=<eshop_id>
-&connectionName=<connection_name>
+&type=<connection_name>
 &callbackUrl=<callback_url>
+&secrets=<secrets>
 ```
 
 ### GET Parameters Explained
 - `eshopId`: E-shop ID of the user for which you want to create the connection.
-- `connectionName`: Connection name, e.g. `unas.eu`, `heureka.cz`, list of available names is on this [endpoint](https://api-docs.mergado.com/?api=mergado-api#/Eshops/get_shops__id__info_){:target="_blank"}.
+- `type`: Connection name, e.g. `unas.eu`, `heureka.cz`, list of available names is on this [endpoint](https://api-docs.mergado.com/?api=mergado-api#/Eshops/get_shops__id__info_){:target="_blank"}.
 - `callbackUrl`: Optional parameter with encoded URL for a possible redirect to this URL after successful connection creation.
+- `secrets`: Optional parameter with secrets for particular connection. Especially for third party platform e.g. Shopify.
