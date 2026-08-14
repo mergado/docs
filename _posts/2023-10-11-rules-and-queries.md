@@ -112,6 +112,7 @@ Fields included in settings request:
    "project_id": "XXXX",
    "runtime_format": "heureka.sk",
    "rule_id": 1,
+   "product_count": 12345,
    "apply_settings": {
       "app_full_name": "application_name",
       "app_rule_type": "apps.application_name.dev.rule",
@@ -135,6 +136,7 @@ Explanation of the fields:
 * `project_id` - ID of the project. Changes in products by application rule are applied to this project.
 * `runtime_format` - Name of the format in which the products are represented when this rule is applied.
 * `rule_id` - ID of rule that will be applied on specified project.
+* `product_count` - Upper bound of the number of products that may be sent to the application during this rule application. It is the number of products this apply process will work with: by default only products changed since the last apply, or all products when a full apply is performed (e.g. it was forced, the rules changed, or the previous apply failed). The application will never receive more products than this value across all data requests of this rule application, and typically receives fewer, because the rule's own queries filter the products further. This field is only informative and cannot be changed by the application.
 * `apply_settings` - Settings of application rule.
     + `app_full_name` - Name of application that rule belongs to.
     + `app_rule_type` - ID of rule specified in [Mergado Developers](https://app.mergado.com/developres/) center.
